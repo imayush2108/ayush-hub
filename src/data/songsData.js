@@ -1,6 +1,6 @@
 /**
  * Full Curated Songs Database for Ayush Hub Media Lounge
- * Contains all 28 Hindi songs with authentic YouTube thumbnail art,
+ * Contains all 32 Hindi songs with authentic YouTube thumbnail art,
  * verified Spotify track IDs, full song lyrics, ratings, and curator metadata.
  */
 
@@ -414,48 +414,54 @@ Tere bina guzara
 Ae dil hai mushkil!`
   },
   {
-    id: "salman-o-jaana",
+    id: "kk-o-jaana",
     title: "O Jaana",
-    movie: "Tere Naam (2003)",
-    artist: "KK, Udit Narayan, Alka Yagnik, Himesh",
-    artistTag: "Salman Hits",
-    category: "salman",
-    youtubeId: "0pehqPZuB8A",
-    spotifyTrackId: "4LheB0pSiKXbdgqNwfEoUD",
-    spotifyUrl: "https://open.spotify.com/track/4LheB0pSiKXbdgqNwfEoUD",
-    duration: "4:39 min",
-    genre: "2000s Bollywood Classic",
-    mood: "Passionate Romantic Melody",
-    rating: "9.6/10",
-    icon: "🌹",
-    director: "Satish Kaushik",
-    musicDirector: "Himesh Reshammiya",
-    lyricist: "Sameer",
-    actors: "Salman Khan, Bhumika Chawla",
-    ayushNote: "Radhe's iconic romantic ode from Tere Naam. KK and Udit Narayan created an unforgettable evergreen composition.",
-    lyrics: `O jaana, yeh maana
-Tu hi mera deewanapan
-Tere bina main adhoora hoon
-Mera tu hi hai armaan
+    movie: "Raaz: The Mystery Continues (2009)",
+    artist: "KK, Raju Singh",
+    artistTag: "KK Classics",
+    category: "soulful",
+    youtubeId: "gBxOfn9XT48",
+    spotifyTrackId: "6nDsd9LoKLPHv4VcpCG5Wg",
+    spotifyUrl: "https://open.spotify.com/track/6nDsd9LoKLPHv4VcpCG5Wg",
+    duration: "5:26 min",
+    genre: "Passionate Rock-Ballad",
+    mood: "Haunting Romantic Devotion",
+    rating: "9.8/10",
+    icon: "🔥",
+    director: "Mohit Suri",
+    musicDirector: "Raju Singh",
+    lyricist: "Sayeed Quadri",
+    actors: "Emraan Hashmi, Kangana Ranaut, Adhyayan Suman",
+    ayushNote: "KK and Raju Singh's iconic passionate rock-ballad from Raaz 2. With Sayeed Quadri's haunting poetry and Emraan Hashmi's intense screen presence, this song captures raw, obsessive love like nothing else.",
+    lyrics: `Main wahan jahan pe tu hai
+Mera ishq toh junoon hai
+O jaana, o jaana
+Main wahan jahan pe tu hai
+Mera ishq toh junoon hai
+O jaana, o jaana
 
-O jaana, yeh maana
-Tu hi mera deewanapan
-Tere bina main adhoora hoon
-Mera tu hi hai armaan
+Har waqt tu hi tu hai
+Har sitam tu hi tu hai
+O jaana...
+Tu sath mere har dam
+Chahe kahin bhi ho, o jaana
 
-Tere naam humne kiya hai
-Jeevan apna saara sanam
-Ho jeevan apna saara sanam
+Din raat sochta hoon
+Tujhe itna pyaar main dun
+Jo kabhi utar na paye
+Tujhe woh khumaar main dun
+Mujhe aise tu mila hai
+Jaise ki koi dua hai
+Tujhpe koi aanch aaye toh
+Main khud ko bhi jala loon
 
-Pyaar bahut karte hain tumse
-Ishq hai be-panah
-Aankhon mein tasveer teri
-Dil mein tera nishaan
+Har din mujhi mein tu hai
+Har shab mujhi mein tu hai
+O jaana...
 
-O jaana, yeh maana
-Tu hi mera deewanapan
-Tere bina main adhoora hoon
-Mera tu hi hai armaan!`
+Main wahan jahan pe tu hai
+Mera ishq toh junoon hai
+O jaana, o jaana!`
   },
   {
     id: "sahiba-aditya-rikhari",
@@ -1091,6 +1097,183 @@ Har aansu piye
 Dil mein magar jalte rahe
 Chaahat ke diye
 Tere liye, tere liye!`
+  },
+  {
+    id: "atif-tere-liye-prince",
+    title: "Tere Liye",
+    movie: "Prince (2010)",
+    artist: "Atif Aslam, Shreya Ghoshal",
+    artistTag: "Atif Aslam",
+    category: "soulful",
+    youtubeId: "AlvUuGJccKs",
+    spotifyTrackId: "0qeZwXIgI4Z4NflV6AnGHk",
+    spotifyUrl: "https://open.spotify.com/track/0qeZwXIgI4Z4NflV6AnGHk",
+    duration: "4:39 min",
+    genre: "Electro-Pop Romantic Ballad",
+    mood: "Electric Euphoric Love",
+    rating: "9.8/10",
+    icon: "⚡",
+    director: "Kookie Gulati",
+    musicDirector: "Sachin Gupta",
+    lyricist: "Sameer",
+    actors: "Vivek Oberoi, Aruna Shields",
+    ayushNote: "Atif Aslam and Shreya Ghoshal's timeless electro-romantic anthem from Prince. Sachin Gupta's pulsating synth baseline combined with Atif's signature emotive high notes makes this track an unforgettable 2010s cult favorite.",
+    lyrics: `Jaagi jaagi soyi na main saari raat tere liye
+Bheegi bheegi palke meri udaas tere liye
+Haan jaagi jaagi soyi na main saari raat tere liye
+Bheegi bheegi palke meri udaas tere liye
+
+Akhiyan bichhayi maine, tere liye
+Duniya bhulayi maine, tere liye
+
+Jannatein sajayi maine tere liye
+Chhod di khudai maine tere liye
+Jannatein sajayi maine tere liye
+Chhod di khudai maine tere liye
+
+Tere liye jhoomu deewana banke tere liye
+Vaada hai mera main chura loon tujhe jahaan se
+Tere liye jhoomu deewana banke tere liye
+Vaada hai mera main chura loon tujhe jahaan se
+
+Akhiyan bichhayi maine, tere liye
+Duniya bhulayi maine, tere liye
+Jannatein sajayi maine tere liye
+Chhod di khudai maine tere liye!`
+  },
+  {
+    id: "armaan-tumhe-apna-banane-ka",
+    title: "Tumhe Apna Banane Ka",
+    movie: "Hate Story 3 (2015)",
+    artist: "Armaan Malik, Neeti Mohan",
+    artistTag: "Soulful Hits",
+    category: "soulful",
+    youtubeId: "wHDh_ruJ8Ug",
+    spotifyTrackId: "3eMlUojGPqVL3c8OVSMfE5",
+    spotifyUrl: "https://open.spotify.com/track/3eMlUojGPqVL3c8OVSMfE5",
+    duration: "5:10 min",
+    genre: "Passionate Romantic Duet",
+    mood: "Sensual & Melodic Obsession",
+    rating: "9.7/10",
+    icon: "✨",
+    director: "Vishal Pandya",
+    musicDirector: "Amaal Mallik",
+    lyricist: "Rashmi Virag",
+    actors: "Sharman Joshi, Zareen Khan",
+    ayushNote: "Amaal Mallik's lavish contemporary recreation of the Sadak classic. Armaan Malik and Neeti Mohan deliver breathtaking, sultry vocal harmonies with dramatic string orchestrations.",
+    lyrics: `Tumhe apna banane ka junoon
+Sar pe sawaar hai, kya karoon?
+Itna sukoon hai teri baahon mein
+Dil beqaraar hai, kya karoon?
+
+Tumhe apna banane ka junoon
+Sar pe sawaar hai, kya karoon?
+
+Aye jaan-e-jaan, mehka hua
+Zulfon ka aalam hai yahaan
+Khushboo teri chhayi hui
+Madhosh hai saara jahaan
+
+Tere siwa koi nahi
+Iss dil ki raahon mein
+Tumhe apna banane ka junoon
+Sar pe sawaar hai, kya karoon?
+
+Kismat meri bas tu hi hai
+Likh di hai maine zindagi
+Har pal tujhe chahunga main
+Teri rahegi aashiqui
+
+Tumhe apna banane ka junoon
+Sar pe sawaar hai, kya karoon!`
+  },
+  {
+    id: "armaan-wajah-tum-ho",
+    title: "Wajah Tum Ho",
+    movie: "Hate Story 3 (2015)",
+    artist: "Armaan Malik",
+    artistTag: "Soulful Hits",
+    category: "soulful",
+    youtubeId: "__ZvXBf1rmw",
+    spotifyTrackId: "1HJunPeNgdiUYwVOtlcgqo",
+    spotifyUrl: "https://open.spotify.com/track/1HJunPeNgdiUYwVOtlcgqo",
+    duration: "5:57 min",
+    genre: "Sensual Piano Romance",
+    mood: "Intense Romantic Confession",
+    rating: "9.7/10",
+    icon: "🖤",
+    director: "Vishal Pandya",
+    musicDirector: "Baman",
+    lyricist: "Manoj Muntashir",
+    actors: "Zareen Khan, Karan Singh Grover",
+    ayushNote: "Armaan Malik at his finest and most soulful. Manoj Muntashir's poignant poetry and the haunting piano melodies made this one of the defining Bollywood romantic ballads of 2015.",
+    lyrics: `Hum jo har mausam pe marne lage
+Wajah tum ho, wajah tum ho
+Hum jo sher-o-shayari karne lage
+Wajah tum ho, wajah tum ho
+
+Bikhre bikhre se the hum
+Ab sanwarne lage
+Wajah tum ho, wajah tum ho
+
+Dhoondte the jise dar-badar
+Mil gaya humko woh hamsafar
+Aa gaye jab se tum zindagi mein
+Har khushi mil gayi dosti mein
+
+Hum jo khud ko bhulane lage
+Wajah tum ho, wajah tum ho
+Hum jo sharm-o-haya chhodne lage
+Wajah tum ho, wajah tum ho
+
+Tu hi aalam, tu hi ibadat
+Tu hi meri pehli mohabbat
+Wajah tum ho, wajah tum ho!`
+  },
+  {
+    id: "shaan-my-dil-goes-mmmm",
+    title: "My Dil Goes Mmmm",
+    movie: "Salaam Namaste (2005)",
+    artist: "Shaan, Gayatri Iyer",
+    artistTag: "Nostalgia 2000s",
+    category: "nostalgia",
+    youtubeId: "fV4x7OCqFLA",
+    spotifyTrackId: "03KYSQyAkKDADoYYjAliTO",
+    spotifyUrl: "https://open.spotify.com/track/03KYSQyAkKDADoYYjAliTO",
+    duration: "7:29 min",
+    genre: "2000s Pop Rom-Com",
+    mood: "Playful Sunshine Flirtation",
+    rating: "9.7/10",
+    icon: "☀️",
+    director: "Siddharth Anand",
+    musicDirector: "Vishal-Shekhar",
+    lyricist: "Jaideep Sahni",
+    actors: "Saif Ali Khan, Preity Zinta",
+    ayushNote: "The quintessential mid-2000s Melbourne sunshine rom-com anthem! Shaan and Gayatri Iyer bring unmatched playful warmth, complemented by Vishal-Shekhar's acoustic guitar rhythm and Saif-Preity's iconic banter.",
+    lyrics: `Raste haseen hain, manzil haseen hai
+Par jaane kyun dil yeh thoda ajeeb hai
+Khwaabon ki chhaon mein, dhoop ki aanch mein
+Rukta nahi dil kisi ke bhi raah mein
+
+My dil goes mmmm...
+My dil goes mmmm...
+My dil goes mmmm...
+My dil goes mmmm...
+
+Tu jo paas aati hai, baat ban jaati hai
+Chhote se lamhe mein raat dhal jaati hai
+Pehle kabhi na hua tha aisa
+Dhadkan kahe kyon yeh pyaar hai kaisa?
+
+My dil goes mmmm...
+My dil goes mmmm...
+My dil goes mmmm...
+My dil goes mmmm...
+
+Zindagi se ladte ladte mil gaye do ajnabee
+Aankhon hi aankhon mein chhid gayi ik nayi aashiqui
+My dil goes mmmm...
+My dil goes mmmm!`
   }
 ];
 

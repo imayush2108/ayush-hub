@@ -237,7 +237,7 @@
           <div class="tracks-panel-head">
             <div class="panel-head-titles">
               <h5>Bollywood & Soulful Vault</h5>
-              <p class="panel-head-sub">28 Curated Hits • Instant HD Playback</p>
+              <p class="panel-head-sub">{{ hindiTracks.length }} Curated Hits • Instant HD Playback</p>
             </div>
             <span class="tracks-count-badge">{{ filteredSongs.length }} Tracks</span>
           </div>
@@ -2039,6 +2039,7 @@ const verdictClass = computed(() => {
   margin-bottom: 0.9rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

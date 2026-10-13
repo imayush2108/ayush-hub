@@ -394,7 +394,7 @@ export default function TrackDetailPage({ trackId, onBack }) {
               <h3 className="related-title">More Handpicked Bollywood Gems</h3>
             </div>
             <button type="button" onClick={onBack} className="btn-explore-all">
-              <span>View All 28 Tracks</span>
+              <span>View All {songsData.length} Tracks</span>
               <ArrowRight size={16} />
             </button>
           </div>
