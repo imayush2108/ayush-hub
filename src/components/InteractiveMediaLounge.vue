@@ -2389,15 +2389,302 @@ const verdictClass = computed(() => {
   box-shadow: 0 12px 26px -4px rgba(245, 158, 11, 0.55);
 }
 
-@media (max-width: 900px) {
+/* --------------------------------------------------------------------------
+   INTERACTIVE MEDIA LOUNGE RESPONSIVE DESIGN (ALL DEVICES)
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
   .music-card-grid, .movie-curated-card, .gaming-tool-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   .vue-media-lounge {
-    padding: 1.4rem 1rem;
+    padding: 1.5rem 1.2rem;
   }
+}
+
+@media (max-width: 768px) {
+  .vue-media-lounge {
+    padding: 1.25rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .artist-filters-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .artist-chips-wrap {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.35rem;
+    width: 100%;
+    gap: 0.45rem;
+  }
+
+  .artist-chips-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .artist-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.8rem;
+  }
+
+  .movie-mock-frame {
+    max-width: 320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .gaming-tool-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .lounge-title {
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  }
+
+  .lounge-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .lounge-tabs {
+    display: flex;
+    gap: 0.45rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lounge-tab-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 0.55rem 0.35rem;
+    font-size: 0.76rem;
+    text-align: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .category-pills-row {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.3rem;
+    width: 100%;
+  }
+
+  .category-pills-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cat-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
   .deck-controls-hindi {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .deck-controls-hindi .ctrl-btn {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.82rem;
+    white-space: normal;
+  }
+
+  .benchmark-breakdown {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .movie-action-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .btn-watchlist, .btn-discuss {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .vue-media-lounge {
+    padding: 1.1rem 0.75rem;
+    border-radius: 16px;
+  }
+
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lounge-tabs {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .lounge-tab-btn {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  .player-deck {
+    padding: 1rem 0.8rem;
+  }
+
+  .deck-top {
+    gap: 0.75rem;
+  }
+
+  .vinyl-display {
+    width: 52px;
+    height: 52px;
+  }
+
+  .vinyl-inner {
+    width: 20px;
+    height: 20px;
+  }
+
+  .deck-meta h4 {
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+
+  .track-desc {
+    font-size: 0.76rem;
+  }
+
+  .full-song-iframe {
+    height: 195px;
+  }
+
+  .spotify-song-iframe {
+    height: 160px;
+  }
+
+  .video-meta-txt {
+    font-size: 0.7rem;
+  }
+
+  .tag-direct-yt, .tag-direct-spotify {
+    font-size: 0.66rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .tracks-list-panel {
+    padding: 1rem 0.8rem;
+  }
+
+  .song-item-card {
+    padding: 0.6rem 0.7rem;
+    gap: 0.6rem;
+  }
+
+  .song-play-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .song-meta-col h6 {
+    font-size: 0.85rem;
+  }
+
+  .song-sub-info {
+    font-size: 0.7rem;
+  }
+
+  .poster-graphic {
+    min-height: 220px;
+    padding: 1.2rem;
+  }
+
+  .poster-graphic h5 {
+    font-size: 1.2rem;
+  }
+
+  .cinema-icon {
+    font-size: 2.8rem;
+  }
+
+  .curator-quote {
+    padding: 0.75rem 0.9rem;
+    gap: 0.75rem;
+  }
+
+  .quote-avatar img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .quote-text p {
+    font-size: 0.84rem;
+  }
+
+  .resolution-selector {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+  }
+
+  .res-btn {
+    font-size: 0.72rem;
+    padding: 0.45rem 0.2rem;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .fps-meter {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .fps-number {
+    font-size: 1.8rem;
+  }
+
+  .benchmark-controls, .benchmark-result-card {
+    padding: 1.1rem 0.85rem;
+  }
+
+  .btn-gamer-squad {
+    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .vue-media-lounge {
+    padding: 0.9rem 0.6rem;
+  }
+
+  .deck-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vinyl-display {
+    width: 44px;
+    height: 44px;
   }
 }
 </style>
+

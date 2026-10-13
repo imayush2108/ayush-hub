@@ -312,3 +312,35 @@ img {
     opacity: 1;
   }
 }
+
+/* --------------------------------------------------------------------------
+   GLOBAL RESPONSIVE UTILITIES (ALL DEVICES: PHONES, TABLETS, DESKTOPS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  .section {
+    padding: 4rem 0;
+  }
+  .container, .container-narrow {
+    padding: 0 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14.5px;
+  }
+  .section {
+    padding: 3.2rem 0;
+  }
+  .container, .container-narrow {
+    padding: 0 1rem;
+  }
+  .toast-popup {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+}
