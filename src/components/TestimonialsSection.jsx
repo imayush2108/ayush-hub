@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
 import { DoodleDots, DoodleSparkle } from './Doodles';
+import { getAssetUrl } from '../utils/assets';
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -10,7 +11,7 @@ export default function TestimonialsSection() {
       name: "Pooja Verma",
       role: "Creative Director & Podcaster",
       location: "Patna, Bihar",
-      avatar: "/images/avatar-1.jpg",
+      avatar: getAssetUrl('images/avatar-1.jpg'),
       rating: 5,
       favorite: "Music Vault"
     },
@@ -20,7 +21,7 @@ export default function TestimonialsSection() {
       name: "Rohan Mehta",
       role: "Film Critic & Cinephile",
       location: "Kolkata, WB",
-      avatar: "/images/avatar-2.jpg",
+      avatar: getAssetUrl('images/avatar-2.jpg'),
       rating: 5,
       favorite: "Cinema Watchlists"
     },
@@ -30,7 +31,7 @@ export default function TestimonialsSection() {
       name: "Vikram Sengupta",
       role: "Competitive FPS Gamer",
       location: "Bengaluru, Karnataka",
-      avatar: "/images/vikram-sengupta.jpg",
+      avatar: getAssetUrl('images/vikram-sengupta.jpg'),
       rating: 5,
       favorite: "Gaming Arena"
     }

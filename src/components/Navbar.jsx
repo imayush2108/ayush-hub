@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageSquare, Sparkles, Music, Film, Gamepad2 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +35,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a href="#home" className="nav-brand">
           <div className="brand-logo-frame">
-            <img src="/images/logo.jpg" alt="Ayush Hub Logo" className="brand-logo-img" />
+            <img src={getAssetUrl('images/logo.jpg')} alt="Ayush Hub Logo" className="brand-logo-img" />
           </div>
           <div className="brand-text-col">
             <span className="brand-title">Ayush Hub</span>

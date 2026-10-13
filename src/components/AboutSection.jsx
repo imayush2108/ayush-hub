@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, Heart, Compass, CheckCircle2, Phone, MessageSquare, MapPin } from 'lucide-react';
 import { DoodleArrow, DoodleSparkle, DoodleDots } from './Doodles';
+import { getAssetUrl } from '../utils/assets';
 
 export default function AboutSection() {
   return (
@@ -16,7 +17,7 @@ export default function AboutSection() {
             {/* Ayush's Portrait */}
             <div className="about-image-frame">
               <img 
-                src="/images/about-ayush.jpg" 
+                src={getAssetUrl('images/about-ayush.jpg')} 
                 alt="Ayush Shrivastava - Founder & Curator of Ayush Hub" 
                 className="about-portrait-img"
               />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MessageSquare, MapPin, Heart, Sparkles, Music, Film, Gamepad2 } from 'lucide-react';
+import { getAssetUrl } from '../utils/assets';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="footer-brand-col">
             <div className="footer-brand-header">
-              <img src="/images/logo.jpg" alt="Ayush Hub Logo" className="footer-logo-img" />
+              <img src={getAssetUrl('images/logo.jpg')} alt="Ayush Hub Logo" className="footer-logo-img" />
               <div className="footer-brand-text">
                 <span className="footer-brand-name">Ayush Hub</span>
                 <span className="footer-brand-sub">Music • Movies • Gaming</span>

@@ -169,7 +169,7 @@
           <!-- Ayush's Personal Curator Note -->
           <div class="curator-music-note">
             <div class="curator-mini-avatar">
-              <img src="/images/hero-ayush.jpg" alt="Ayush Shrivastava" />
+              <img :src="getAssetUrl('images/hero-ayush.jpg')" alt="Ayush Shrivastava" />
             </div>
             <div class="curator-mini-text">
               <strong>Ayush's Review Note:</strong>
@@ -330,7 +330,7 @@
 
           <div class="curator-quote">
             <div class="quote-avatar">
-              <img src="/images/hero-ayush.jpg" alt="Ayush Shrivastava" />
+              <img :src="getAssetUrl('images/hero-ayush.jpg')" alt="Ayush Shrivastava" />
             </div>
             <div class="quote-text">
               <strong>Ayush's Review Note:</strong>
@@ -447,6 +447,8 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { getAssetUrl } from '../utils/assets';
+
 
 // State
 const activeTab = ref('music');

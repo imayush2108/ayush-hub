@@ -1,6 +1,8 @@
 import React from 'react';
 import { Play, Sparkles, ArrowRight, Star, Heart, CheckCircle2 } from 'lucide-react';
 import { DoodleeSpiral, DoodleSquiggle, DoodleSparkle, DoodleArrow, DoodleDots } from './Doodles';
+import { getAssetUrl } from '../utils/assets';
+
 
 export default function HeroSection() {
   return (
@@ -57,9 +59,9 @@ export default function HeroSection() {
           {/* Real Community Badge matching reference image */}
           <div className="hero-community-card">
             <div className="avatar-cluster">
-              <img src="/images/avatar-1.jpg" alt="Community Member 1" className="cluster-avatar" />
-              <img src="/images/avatar-2.jpg" alt="Community Member 2" className="cluster-avatar" />
-              <img src="/images/vikram-sengupta.jpg" alt="Vikram Sengupta" className="cluster-avatar" />
+              <img src={getAssetUrl('images/avatar-1.jpg')} alt="Community Member 1" className="cluster-avatar" />
+              <img src={getAssetUrl('images/avatar-2.jpg')} alt="Community Member 2" className="cluster-avatar" />
+              <img src={getAssetUrl('images/vikram-sengupta.jpg')} alt="Vikram Sengupta" className="cluster-avatar" />
               <span className="cluster-avatar-extra">5k+</span>
             </div>
             <div className="community-meta">
@@ -94,7 +96,7 @@ export default function HeroSection() {
             {/* Ayush's Portrait */}
             <div className="hero-image-frame">
               <img 
-                src="/images/hero-ayush.jpg" 
+                src={getAssetUrl('images/hero-ayush.jpg')} 
                 alt="Ayush Shrivastava - Founder & Curator of Ayush Hub" 
                 className="hero-portrait-img"
               />

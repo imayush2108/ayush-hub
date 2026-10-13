@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink, Star, Play, Sparkles, X, Heart, Eye } from 'lucide-react';
 import { DoodleSquiggle, DoodleSparkle } from './Doodles';
+import { getAssetUrl } from '../utils/assets';
 
 export default function ShowcaseSection() {
   const [activeTab, setActiveTab] = useState('All');
@@ -13,7 +14,7 @@ export default function ShowcaseSection() {
       id: 1,
       title: 'Neon Rhythms: Lo-Fi Chill & Synthwave Vault',
       category: 'Music Vault',
-      image: '/images/showcase-music.jpg',
+      image: getAssetUrl('images/showcase-music.jpg'),
       badge: "Ayush's Choice • 500+ Tracks",
       score: '9.9/10',
       tagline: 'Analog tape warmth, soothing lo-fi beats, and nostalgic synth chords for deep focus.',
@@ -29,7 +30,7 @@ export default function ShowcaseSection() {
       id: 2,
       title: 'Neo-Tokyo 2049 & Cinema Masterpieces',
       category: 'Cinema Watchlist',
-      image: '/images/showcase-movies.jpg',
+      image: getAssetUrl('images/showcase-movies.jpg'),
       badge: 'Cinephile Essential • 4K HDR',
       score: '9.8/10',
       tagline: 'Atmospheric sci-fi, deep psychological thrillers, and award-winning cinematography breakdowns.',
@@ -45,7 +46,7 @@ export default function ShowcaseSection() {
       id: 3,
       title: 'Cyberpunk Triple-Monitor Battlestation & Benchmarks',
       category: 'Gaming Arena',
-      image: '/images/showcase-gaming.jpg',
+      image: getAssetUrl('images/showcase-gaming.jpg'),
       badge: 'RTX 4080 Super • 165Hz Ultra',
       score: '9.7/10',
       tagline: 'In-depth benchmark testing, path-traced ray tracing comparisons, and competitive esports configs.',
