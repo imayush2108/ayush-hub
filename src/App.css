@@ -2453,6 +2453,43 @@
 }
 
 /* ==========================================================================
+   MEDIA LOUNGE SECTION & SCROLL PADDING
+   ========================================================================== */
+#media-lounge {
+  scroll-margin-top: 85px;
+}
+
+.section-lounge {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (max-width: 768px) {
+  #media-lounge {
+    scroll-margin-top: 70px;
+  }
+
+  .section-lounge {
+    padding-top: 1.8rem !important;
+    padding-bottom: 2.2rem !important;
+  }
+
+  .section-lounge .section-title-wrap {
+    margin-bottom: 1.1rem !important;
+  }
+
+  .section-lounge .section-heading {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .section-lounge .section-subtext {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+  }
+}
+
+/* ==========================================================================
    INDIVIDUAL TRACK DETAIL PAGE & MEDIA LOUNGE LINKS (SHOWCASE STYLE)
    ========================================================================== */
 

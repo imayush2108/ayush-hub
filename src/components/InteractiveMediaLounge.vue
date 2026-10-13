@@ -1992,297 +1992,372 @@ const verdictClass = computed(() => {
 
 @media (max-width: 768px) {
   .vue-media-lounge {
-    padding: 1.25rem 1rem;
+    padding: 1.15rem 0.85rem 1.5rem 0.85rem;
     border-radius: var(--radius-lg);
   }
 
+  /* Hide duplicate inner header on mobile to avoid overlap */
   .lounge-header {
-    margin-bottom: 0.85rem;
-    text-align: center;
-  }
-
-  .tech-badge {
     display: none;
   }
 
-  .lounge-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.2rem;
-  }
-
-  .lounge-subtitle {
-    display: none;
-  }
-
-  .artist-filters-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.45rem;
-    margin-bottom: 1rem;
-  }
-
-  .artist-chips-wrap {
-    display: flex;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 0.35rem;
-    width: 100%;
-    gap: 0.45rem;
-  }
-
-  .artist-chips-wrap::-webkit-scrollbar {
-    display: none;
-  }
-
-  .artist-chip {
-    flex-shrink: 0;
-    white-space: nowrap;
-    font-size: 0.78rem;
-    padding: 0.35rem 0.8rem;
-  }
-
-  .movie-mock-frame {
-    max-width: 320px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .gaming-tool-grid {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 640px) {
+  /* 3-Column Segmented Tab Bar in Single Row */
   .tab-label-full {
-    display: none;
+    display: none !important;
   }
 
   .tab-label-short {
-    display: inline;
+    display: inline !important;
   }
 
   .lounge-tabs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
-    width: 100%;
-    margin-bottom: 1.1rem;
-  }
-
-  .lounge-tab-btn {
-    width: 100%;
-    padding: 0.55rem 0.25rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-align: center;
-    justify-content: center;
-    gap: 0.3rem;
-    border-radius: 9999px;
-    white-space: nowrap;
-  }
-
-  .category-pills-row {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 0.3rem;
-    width: 100%;
-  }
-
-  .category-pills-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .cat-pill {
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-
-  .deck-controls-hindi {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.35rem;
-    width: 100%;
-    margin-top: 0.65rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .deck-controls-hindi .ctrl-btn {
-    width: 100%;
-    padding: 0.55rem 0.25rem;
-    font-size: 0.74rem;
-    font-weight: 700;
-    white-space: nowrap;
-    border-radius: 8px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .benchmark-breakdown {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
-  .movie-action-row {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.65rem;
-  }
-
-  .btn-watchlist, .btn-discuss {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .vue-media-lounge {
-    padding: 1rem 0.75rem 1.4rem 0.75rem;
-    border-radius: 16px;
-  }
-
-  .lounge-tabs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.35rem;
+    gap: 0.45rem !important;
+    width: 100% !important;
+    margin-bottom: 1.1rem !important;
   }
 
   .lounge-tab-btn {
-    padding: 0.5rem 0.15rem;
-    font-size: 0.74rem;
-    gap: 0.25rem;
+    width: 100% !important;
+    padding: 0.55rem 0.25rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
   }
 
+  /* Artist Filter Horizontal Scroller */
+  .artist-filters-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+    margin-bottom: 0.95rem !important;
+    width: 100% !important;
+  }
+
+  .filter-lead-label {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: #F59E0B !important;
+  }
+
+  .artist-chips-wrap {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 0.35rem !important;
+    width: 100% !important;
+    gap: 0.45rem !important;
+  }
+
+  .artist-chips-wrap::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .artist-chip {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  /* Player Deck */
   .player-deck {
-    padding: 0.95rem 0.75rem;
+    padding: 1rem 0.85rem !important;
   }
 
   .deck-top {
-    gap: 0.65rem;
+    display: flex !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .vinyl-display {
-    width: 50px;
-    height: 50px;
+    width: 52px !important;
+    height: 52px !important;
+    flex-shrink: 0 !important;
   }
 
   .vinyl-inner {
-    width: 20px;
-    height: 20px;
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .deck-meta {
+    flex-grow: 1 !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
   }
 
   .deck-meta h4 {
-    font-size: 1.05rem;
-    line-height: 1.25;
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin: 0.15rem 0 !important;
   }
 
   .track-desc {
-    font-size: 0.74rem;
+    font-size: 0.76rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 0.35rem !important;
   }
 
+  .track-tags {
+    display: flex !important;
+    gap: 0.35rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .track-tag {
+    font-size: 0.68rem !important;
+    padding: 0.15rem 0.45rem !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+  }
+
+  .deck-page-link-wrap {
+    margin-top: 0.65rem !important;
+  }
+
+  .deck-direct-page-btn {
+    font-size: 0.76rem !important;
+    padding: 0.4rem 0.85rem !important;
+  }
+
+  /* Embedded Player Box */
   .full-song-iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    max-height: 210px;
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: 210px !important;
   }
 
   .spotify-song-iframe {
-    height: 152px;
+    height: 152px !important;
+  }
+
+  .video-player-topbar {
+    padding: 0.4rem 0.65rem !important;
+  }
+
+  .engine-tab-btn {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.55rem !important;
+  }
+
+  .video-duration-pill {
+    font-size: 0.68rem !important;
+    padding: 0.15rem 0.45rem !important;
+  }
+
+  .full-song-footer-tag {
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.7rem !important;
   }
 
   .video-meta-txt {
-    font-size: 0.7rem;
+    font-size: 0.7rem !important;
   }
 
   .tag-direct-yt, .tag-direct-spotify {
-    font-size: 0.66rem;
-    padding: 0.15rem 0.45rem;
+    font-size: 0.66rem !important;
+    padding: 0.15rem 0.45rem !important;
   }
 
+  .curator-music-note {
+    padding: 0.55rem 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    gap: 0.65rem !important;
+  }
+
+  .curator-mini-avatar img {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .curator-mini-text strong {
+    font-size: 0.74rem !important;
+  }
+
+  .curator-mini-text p {
+    font-size: 0.76rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* 2x2 Symmetrical Grid Controls on Mobile & Tablet */
+  .deck-controls-hindi {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .deck-controls-hindi .ctrl-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0.65rem 0.4rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    border-radius: 9px !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Track list panel */
   .tracks-list-panel {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.85rem !important;
   }
 
-  .song-item-card {
-    padding: 0.6rem 0.65rem;
-    gap: 0.55rem;
+  .vault-search-box {
+    margin-bottom: 0.65rem !important;
   }
 
-  .song-play-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 0.78rem;
+  .vault-search-input {
+    font-size: 0.8rem !important;
+    padding: 0.5rem 0.75rem 0.5rem 2rem !important;
   }
 
-  .song-meta-col h6 {
-    font-size: 0.84rem;
+  .category-pills-row {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-bottom: 0.25rem !important;
+    width: 100% !important;
   }
 
-  .song-sub-info {
-    font-size: 0.68rem;
+  .category-pills-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .category-pill-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.65rem !important;
+  }
+
+  .track-select-card {
+    padding: 0.6rem 0.65rem !important;
+    gap: 0.6rem !important;
+  }
+
+  .track-info h6 {
+    font-size: 0.86rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .track-info span {
+    font-size: 0.72rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .track-card-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .track-card-lyrics-link {
+    font-size: 0.68rem !important;
+    padding: 0.18rem 0.45rem !important;
+  }
+
+  .track-time {
+    font-size: 0.7rem !important;
+  }
+
+  /* Movie Matcher & Gaming Benchmarks Responsive */
+  .movie-mock-frame {
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
   }
 
   .poster-graphic {
-    min-height: 220px;
-    padding: 1.2rem;
+    min-height: 220px !important;
+    padding: 1.2rem !important;
   }
 
   .poster-graphic h5 {
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
   }
 
   .cinema-icon {
-    font-size: 2.8rem;
+    font-size: 2.8rem !important;
   }
 
-  .curator-quote {
-    padding: 0.75rem 0.85rem;
-    gap: 0.75rem;
+  .movie-action-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.65rem !important;
   }
 
-  .quote-avatar img {
-    width: 36px;
-    height: 36px;
+  .btn-watchlist, .btn-discuss {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
-  .quote-text p {
-    font-size: 0.84rem;
+  .benchmark-breakdown {
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
   }
 
   .resolution-selector {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.35rem;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.35rem !important;
   }
 
   .res-btn {
-    font-size: 0.72rem;
-    padding: 0.45rem 0.2rem;
-    text-align: center;
-    justify-content: center;
+    font-size: 0.72rem !important;
+    padding: 0.45rem 0.2rem !important;
+    text-align: center !important;
+    justify-content: center !important;
   }
 
   .fps-meter {
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 0.8rem !important;
   }
 
   .fps-number {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
 
   .benchmark-controls, .benchmark-result-card {
-    padding: 1.1rem 0.85rem;
+    padding: 1.1rem 0.85rem !important;
   }
 
   .btn-gamer-squad {
-    font-size: 0.85rem;
-    padding: 0.8rem 1rem;
-    text-align: center;
+    font-size: 0.85rem !important;
+    padding: 0.8rem 1rem !important;
+    text-align: center !important;
   }
 }
 
@@ -2292,18 +2367,18 @@ const verdictClass = computed(() => {
   }
 
   .lounge-tab-btn {
-    font-size: 0.7rem;
-    padding: 0.45rem 0.1rem;
+    font-size: 0.72rem !important;
+    padding: 0.45rem 0.1rem !important;
   }
 
   .deck-controls-hindi .ctrl-btn {
-    font-size: 0.68rem;
-    padding: 0.45rem 0.15rem;
+    font-size: 0.72rem !important;
+    padding: 0.55rem 0.2rem !important;
   }
 
   .vinyl-display {
-    width: 42px;
-    height: 42px;
+    width: 44px !important;
+    height: 44px !important;
   }
 }
 </style>
