@@ -76,6 +76,16 @@
                 <span class="track-tag">{{ currentSong.mood }}</span>
                 <span class="track-tag">Curated by Ayush</span>
               </div>
+              <div class="deck-page-link-wrap">
+                <a 
+                  :href="'#/track/' + currentSong.id" 
+                  class="deck-direct-page-btn"
+                  title="Open dedicated song detail page with lyrics, HD video & Spotify"
+                >
+                  <span>📖 Full Song Page &amp; Lyrics</span>
+                  <span class="arr-ico">↗</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -180,7 +190,7 @@
             </div>
           </div>
 
-          <!-- Deck Quick Actions (Compact 3-Button Row) -->
+          <!-- Deck Quick Actions (Compact 4-Button Row) -->
           <div class="deck-controls deck-controls-hindi">
             <button 
               type="button"
@@ -201,6 +211,14 @@
             >
               <span>▶ YouTube</span>
             </button>
+
+            <a 
+              :href="'#/track/' + currentSong.id" 
+              class="ctrl-btn btn-page-link-deck"
+              title="View full detail page & complete lyrics"
+            >
+              <span>📖 Lyrics &amp; Details ↗</span>
+            </a>
 
             <a 
               :href="'https://wa.me/919508678989?text=Hi%20Ayush,%20I%20love%20the%20song%20' + encodeURIComponent(currentSong.title) + '%20(' + encodeURIComponent(currentSong.movie) + ')!'" 
@@ -265,6 +283,14 @@
               </div>
               <div class="track-card-right">
                 <span class="badge-mini">{{ song.artistTag }}</span>
+                <a 
+                  :href="'#/track/' + song.id" 
+                  class="track-card-lyrics-link" 
+                  @click.stop 
+                  title="Open dedicated page for this track with lyrics, HD video & Spotify"
+                >
+                  Page &amp; Lyrics ↗
+                </a>
                 <span class="track-time">{{ song.duration }}</span>
               </div>
             </div>
@@ -451,6 +477,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { getAssetUrl } from '../utils/assets';
+import { songsData as hindiTracks } from '../data/songsData.js';
 
 
 // State
@@ -487,457 +514,6 @@ const musicCategories = [
   { id: 'nostalgia', label: '2000s Nostalgia & SRK' },
   { id: 'salman', label: 'Salman Khan Vault' },
   { id: 'bangers', label: 'Party & Upbeat' }
-];
-
-const hindiTracks = [
-  {
-    "id": "mohit-tum-se-hi",
-    "title": "Tum Se Hi",
-    "movie": "Jab We Met (2007)",
-    "artist": "Mohit Chauhan, Pritam",
-    "artistTag": "Mohit Chauhan",
-    "category": "soulful",
-    "youtubeId": "mt9xg0mmt28",
-    "spotifyTrackId": "0eRFWM85LxJSNw3fbFJzhq",
-    "spotifyUrl": "https://open.spotify.com/track/0eRFWM85LxJSNw3fbFJzhq",
-    "duration": "5:23 min",
-    "genre": "Acoustic Indie Pop",
-    "mood": "Monsoon Calm & Serenity",
-    "icon": "🌿",
-    "ayushNote": "Mohit Chauhan's gentle guitar strumming and breezy vocal texture create an atmosphere that feels like a quiet, refreshing rainy morning."
-  },
-  {
-    "id": "kk-zara-sa",
-    "title": "Zara Sa",
-    "movie": "Jannat (2008)",
-    "artist": "KK, Pritam",
-    "artistTag": "KK Classics",
-    "category": "soulful",
-    "youtubeId": "ZsAOnmByy38",
-    "spotifyTrackId": "0s8kr3ffO4lW7YxusmRXfu",
-    "spotifyUrl": "https://open.spotify.com/track/0s8kr3ffO4lW7YxusmRXfu",
-    "duration": "5:03 min",
-    "genre": "Soulful Bollywood",
-    "mood": "Late Night Romance & Nostalgia",
-    "icon": "✨",
-    "ayushNote": "KK sir's voice in the hook line 'Zara sa jhoom loon main...' gives eternal goosebumps. One of my all-time favorite tracks for late-night drives in Purnia."
-  },
-  {
-    "id": "arijit-tum-hi-ho",
-    "title": "Tum Hi Ho",
-    "movie": "Aashiqui 2 (2013)",
-    "artist": "Arijit Singh, Mithoon",
-    "artistTag": "Arijit Singh",
-    "category": "soulful",
-    "youtubeId": "81qmmlsIE3k",
-    "spotifyTrackId": "56zZ48jdyY2oDXHVnwg5Di",
-    "spotifyUrl": "https://open.spotify.com/track/56zZ48jdyY2oDXHVnwg5Di",
-    "duration": "4:22 min",
-    "genre": "Soulful Ballad",
-    "mood": "Heartfelt Love & Deep Vibe",
-    "icon": "🌧️",
-    "ayushNote": "The track that defined an entire era of Bollywood music. Arijit's raw emotion and heartfelt piano arrangement are timeless therapy."
-  },
-  {
-    "id": "atif-tu-jaane-na",
-    "title": "Tu Jaane Na",
-    "movie": "Ajab Prem Ki Ghazab Kahani (2009)",
-    "artist": "Atif Aslam, Pritam",
-    "artistTag": "Atif Aslam",
-    "category": "soulful",
-    "youtubeId": "53l2DkivxJs",
-    "spotifyTrackId": "4iFPsNzNV7V9KJgcOX7TEO",
-    "spotifyUrl": "https://open.spotify.com/track/4iFPsNzNV7V9KJgcOX7TEO",
-    "duration": "5:41 min",
-    "genre": "Melodic Sufi Rock",
-    "mood": "Bittersweet Longing",
-    "icon": "🌙",
-    "ayushNote": "Atif Aslam's signature vocal texture and Pritam's acoustic arrangement make this an unforgettable masterpiece in any music collection."
-  },
-  {
-    "id": "kk-labon-ko",
-    "title": "Labon Ko",
-    "movie": "Bhool Bhulaiyaa (2007)",
-    "artist": "KK, Pritam",
-    "artistTag": "KK Classics",
-    "category": "nostalgia",
-    "youtubeId": "pHpn3rAvFvY",
-    "spotifyTrackId": "5WncH5iZ5GFlnXm7jKEXVP",
-    "spotifyUrl": "https://open.spotify.com/track/5WncH5iZ5GFlnXm7jKEXVP",
-    "duration": "5:44 min",
-    "genre": "Romantic Melody",
-    "mood": "Nostalgic Warmth",
-    "icon": "🔥",
-    "ayushNote": "Pure magic from KK. Official T-Series 8K film video with Akshay Kumar and Vidya Balan. The passion in this composition is eternal."
-  },
-  {
-    "id": "shreya-kalyani",
-    "title": "Kalyani",
-    "movie": "Trending Soulful Fusion (2024)",
-    "artist": "Shreya Ghoshal, ARJN, KDS, FIFTY4",
-    "artistTag": "Shreya Ghoshal",
-    "category": "soulful",
-    "youtubeId": "xvT1jH8B9AM",
-    "spotifyTrackId": "2y8mkajKikV5S1PRCMQ5WL",
-    "spotifyUrl": "https://open.spotify.com/track/2y8mkajKikV5S1PRCMQ5WL",
-    "duration": "3:40 min",
-    "genre": "Soulful Hip-Hop Fusion",
-    "mood": "Late Night Chill & Vibe",
-    "icon": "🌺",
-    "ayushNote": "The infectious blend of Shreya Ghoshal's angelic vocals with modern chill beats makes 'Kalyani' an absolute loop-worthy masterpiece."
-  },
-  {
-    "id": "kala-chashma",
-    "title": "Kala Chashma",
-    "movie": "Baar Baar Dekho (2016)",
-    "artist": "Badshah, Neha Kakkar, Amar Arshi",
-    "artistTag": "Party Hits",
-    "category": "bangers",
-    "youtubeId": "k4yXQkG2s1E",
-    "spotifyTrackId": "6mdLX10dvBb7rGYbMXpKzz",
-    "spotifyUrl": "https://open.spotify.com/track/6mdLX10dvBb7rGYbMXpKzz",
-    "duration": "3:07 min",
-    "genre": "Punjabi Party Anthem",
-    "mood": "High Voltage Celebration",
-    "icon": "🕶️",
-    "ayushNote": "The ultimate global dance banger with insane bass drops and an infectious groove. Katrina Kaif and Sidharth Malhotra's energy is unmatched!"
-  },
-  {
-    "id": "ae-dil-hai-mushkil",
-    "title": "Ae Dil Hai Mushkil",
-    "movie": "Ae Dil Hai Mushkil (2016)",
-    "artist": "Arijit Singh, Pritam",
-    "artistTag": "Arijit Singh",
-    "category": "soulful",
-    "youtubeId": "6FURuLYrR_Q",
-    "spotifyTrackId": "1UWacd8x8tPPwmrPB1MoBI",
-    "spotifyUrl": "https://open.spotify.com/track/1UWacd8x8tPPwmrPB1MoBI",
-    "duration": "4:29 min",
-    "genre": "Sufi Rock & Symphony",
-    "mood": "Unrequited Passion & Fire",
-    "icon": "🎸",
-    "ayushNote": "Arijit Singh's vocal explosion on Pritam's crescendo makes this the defining title track of modern romantic cinema."
-  },
-  {
-    "id": "salman-o-jaana",
-    "title": "O Jaana",
-    "movie": "Tere Naam (2003)",
-    "artist": "KK, Udit Narayan, Alka Yagnik, Himesh",
-    "artistTag": "Salman Hits",
-    "category": "salman",
-    "youtubeId": "0pehqPZuB8A",
-    "spotifyTrackId": "4LheB0pSiKXbdgqNwfEoUD",
-    "spotifyUrl": "https://open.spotify.com/track/4LheB0pSiKXbdgqNwfEoUD",
-    "duration": "5:36 min",
-    "genre": "2000s Bollywood Classic",
-    "mood": "Passionate Romantic Melody",
-    "icon": "🌹",
-    "ayushNote": "Radhe's iconic romantic ode from Tere Naam. KK and Udit Narayan created an unforgettable evergreen composition."
-  },
-  {
-    "id": "sahiba-aditya-rikhari",
-    "title": "Sahiba",
-    "movie": "Independent Single (2024)",
-    "artist": "Aditya Rikhari",
-    "artistTag": "Aditya Rikhari",
-    "category": "soulful",
-    "youtubeId": "n2dVFdqMYGA",
-    "spotifyTrackId": "0eLtIxPRNJfsmehITZ1qaJ",
-    "spotifyUrl": "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ",
-    "duration": "3:15 min",
-    "genre": "Acoustic Soulful Indie Pop",
-    "mood": "Heartfelt Longing & Acoustic Warmth",
-    "icon": "🕊️",
-    "ayushNote": "The genuine original acoustic masterpiece by Aditya Rikhari. Raw heartfelt vocals and relatable songwriting that tugs straight at the heartstrings."
-  },
-  {
-    "id": "salman-jeene-ke-chaar-din",
-    "title": "Jeene Ke Hain Chaar Din",
-    "movie": "Mujhse Shaadi Karogi (2004)",
-    "artist": "Sonu Nigam, Sunidhi Chauhan, Sajid-Wajid",
-    "artistTag": "Salman Hits",
-    "category": "salman",
-    "youtubeId": "IYhnjNbHWVM",
-    "spotifyTrackId": "4UJih0aZ8YcQm4CIErba45",
-    "spotifyUrl": "https://open.spotify.com/track/4UJih0aZ8YcQm4CIErba45",
-    "duration": "5:00 min",
-    "genre": "Goa Beach Dance Anthem",
-    "mood": "Carefree Fun & Swagger",
-    "icon": "🏖️",
-    "ayushNote": "Salman Bhai's most famous towel dance step of all time! Sonu Nigam's youthful energy is unbeatable."
-  },
-  {
-    "id": "salman-mujhse-shaadi-karogi",
-    "title": "Mujhse Shaadi Karogi",
-    "movie": "Mujhse Shaadi Karogi (2004)",
-    "artist": "Sonu Nigam, Udit Narayan, Sunidhi Chauhan",
-    "artistTag": "Sonu Nigam",
-    "category": "salman",
-    "youtubeId": "iCKp0SmF9T8",
-    "spotifyTrackId": "6E6UhpF6vV6Cu1VFbrlVM2",
-    "spotifyUrl": "https://open.spotify.com/track/6E6UhpF6vV6Cu1VFbrlVM2",
-    "duration": "4:38 min",
-    "genre": "Bollywood Comedy Romance",
-    "mood": "Playful Competitive Energy",
-    "icon": "💍",
-    "ayushNote": "The iconic showdown between Salman Khan and Akshay Kumar with Priyanka Chopra in the middle. Pure nostalgic comedy gold!"
-  },
-  {
-    "id": "salman-laal-dupatta",
-    "title": "Laal Dupatta",
-    "movie": "Mujhse Shaadi Karogi (2004)",
-    "artist": "Udit Narayan, Alka Yagnik",
-    "artistTag": "Salman Hits",
-    "category": "salman",
-    "youtubeId": "1jjDs69WWUQ",
-    "spotifyTrackId": "2zGaY3iWYTHjgpSLC0wqdx",
-    "spotifyUrl": "https://open.spotify.com/track/2zGaY3iWYTHjgpSLC0wqdx",
-    "duration": "4:47 min",
-    "genre": "Melodious Duet",
-    "mood": "Wholesome 2000s Nostalgia",
-    "icon": "🧣",
-    "ayushNote": "Udit Narayan and Alka Yagnik's golden era harmonies. One of the catchiest romantic hooks of the 2000s."
-  },
-  {
-    "id": "salman-aaja-soniye",
-    "title": "Aaja Soniye",
-    "movie": "Mujhse Shaadi Karogi (2004)",
-    "artist": "Sonu Nigam, Alka Yagnik",
-    "artistTag": "Sonu Nigam",
-    "category": "salman",
-    "youtubeId": "OlJgITiRnLM",
-    "spotifyTrackId": "6loBU3j6zvULZMIlD7n4JW",
-    "spotifyUrl": "https://open.spotify.com/track/6loBU3j6zvULZMIlD7n4JW",
-    "duration": "5:02 min",
-    "genre": "Bhangra Pop Romance",
-    "mood": "Festive Wedding Vibes",
-    "icon": "🎉",
-    "ayushNote": "Sonu Nigam at the peak of his vocal charm with Sajid-Wajid's infectious beats. A timeless sangeet and party favorite!"
-  },
-  {
-    "id": "srk-main-hoon-na",
-    "title": "Main Hoon Na",
-    "movie": "Main Hoon Na (2004)",
-    "artist": "Sonu Nigam, Shreya Ghoshal, Anu Malik",
-    "artistTag": "Sonu Nigam",
-    "category": "nostalgia",
-    "youtubeId": "DIJW7rWPkSw",
-    "spotifyTrackId": "0v7rJIwQ2xeB1W19eU5IQS",
-    "spotifyUrl": "https://open.spotify.com/track/0v7rJIwQ2xeB1W19eU5IQS",
-    "duration": "6:02 min",
-    "genre": "Grand Orchestral Anthem",
-    "mood": "Reassurance & Pure Emotion",
-    "icon": "🎖️",
-    "ayushNote": "Shah Rukh Khan's Major Ram signature theme. Sonu Nigam's emotive crescendo gives goosebumps every single listen."
-  },
-  {
-    "id": "srk-tumse-milke-dil-ka",
-    "title": "Tumse Milke Dil Ka Hai Jo Haal",
-    "movie": "Main Hoon Na (2004)",
-    "artist": "Sonu Nigam, Altaf Raja, Anu Malik",
-    "artistTag": "Sonu Nigam",
-    "category": "nostalgia",
-    "youtubeId": "70kwKk0An3c",
-    "spotifyTrackId": "1ax8ZuwRVkSdzzsIqyCNWQ",
-    "spotifyUrl": "https://open.spotify.com/track/1ax8ZuwRVkSdzzsIqyCNWQ",
-    "duration": "5:56 min",
-    "genre": "Qawwali Fusion Dance",
-    "mood": "SRK Romantic Swagger",
-    "icon": "🕺",
-    "ayushNote": "SRK dancing in a black bandhgala with Sushmita Sen. The qawwali claps and Sonu Nigam's vocals make this an immortal dance classic."
-  },
-  {
-    "id": "srk-chale-jaise-hawayein",
-    "title": "Chale Jaise Hawayein",
-    "movie": "Main Hoon Na (2004)",
-    "artist": "KK, Vasundhara Das",
-    "artistTag": "KK Classics",
-    "category": "nostalgia",
-    "youtubeId": "UJ-MT8ZnUxY",
-    "spotifyTrackId": "3pRF060IEOI5XSQAvONgSt",
-    "spotifyUrl": "https://open.spotify.com/track/3pRF060IEOI5XSQAvONgSt",
-    "duration": "5:25 min",
-    "genre": "Youth Campus Anthem",
-    "mood": "Breezy College Freedom",
-    "icon": "🍃",
-    "ayushNote": "Farah Khan's legendary continuous single-shot sequence with Amrita Rao & Zayed Khan. KK's youthful voice captures pure freedom."
-  },
-  {
-    "id": "taarzan-oh-lala-re",
-    "title": "Oh Lala Re",
-    "movie": "Taarzan: The Wonder Car (2004)",
-    "artist": "KK, Alka Yagnik, Himesh Reshammiya",
-    "artistTag": "KK Classics",
-    "category": "nostalgia",
-    "youtubeId": "6NAGAEYFzjI",
-    "spotifyTrackId": "2JWFJyZvXVr8gr1LT3BiVK",
-    "spotifyUrl": "https://open.spotify.com/track/2JWFJyZvXVr8gr1LT3BiVK",
-    "duration": "4:32 min",
-    "genre": "Romantic 2000s Pop",
-    "mood": "Nostalgic Road Romance",
-    "icon": "🚗",
-    "ayushNote": "KK and Alka Yagnik's energetic duet with Himesh Reshammiya's unforgettable melodious rhythm. Pure 2004 wonder car nostalgia!"
-  },
-  {
-    "id": "dhoom-dilbara",
-    "title": "Dilbara",
-    "movie": "Dhoom (2004)",
-    "artist": "Abhijeet Bhattacharya, Sowmya Raoh, Pritam",
-    "artistTag": "Nostalgia 2000s",
-    "category": "nostalgia",
-    "youtubeId": "q0loWjfX0d8",
-    "spotifyTrackId": "4kUWdUJZnxWMxY31AzorKa",
-    "spotifyUrl": "https://open.spotify.com/track/4kUWdUJZnxWMxY31AzorKa",
-    "duration": "4:38 min",
-    "genre": "Pop Rock Melody",
-    "mood": "Carefree Biker Romance",
-    "icon": "🏍️",
-    "ayushNote": "Ali's legendary daydreaming anthem with Esha Deol in Dhoom 1! Pritam's acoustic guitar rhythm is instantly nostalgic."
-  },
-  {
-    "id": "fukrey-ishq-de-fanniyar",
-    "title": "Ishq De Fanniyar (Male)",
-    "movie": "Fukrey Returns (2017)",
-    "artist": "Shaarib & Toshi, Kumaar",
-    "artistTag": "Soulful Hits",
-    "category": "soulful",
-    "youtubeId": "LySSIpmJQxg",
-    "spotifyTrackId": "6JARNpkUypyzQEltxZM95O",
-    "spotifyUrl": "https://open.spotify.com/track/6JARNpkUypyzQEltxZM95O",
-    "duration": "4:24 min",
-    "genre": "Punjabi Sufi Ballad",
-    "mood": "Deep Romantic Euphoria",
-    "icon": "🐍",
-    "ayushNote": "The soulful acoustic guitar and emotive vocals make this male version an absolutely underrated gem in modern Bollywood."
-  },
-  {
-    "id": "humsafar-akhil",
-    "title": "Humsafar",
-    "movie": "Badrinath Ki Dulhania (2017)",
-    "artist": "Akhil Sachdeva, Mansheel Gujral",
-    "artistTag": "Soulful Hits",
-    "category": "soulful",
-    "youtubeId": "8v-TWxPWIWc",
-    "spotifyTrackId": "6TFESXMfJJWwccviaxGAMa",
-    "spotifyUrl": "https://open.spotify.com/track/6TFESXMfJJWwccviaxGAMa",
-    "duration": "4:28 min",
-    "genre": "Heartfelt Acoustic Ballad",
-    "mood": "Unconditional Devotion",
-    "icon": "🌌",
-    "ayushNote": "Akhil Sachdeva's raw vocal vulnerability on Varun & Alia in the official T-Series original full video. Pure heartfelt melody."
-  },
-  {
-    "id": "atif-dekhte-dekhte",
-    "title": "Dekhte Dekhte",
-    "movie": "Batti Gul Meter Chalu (2018)",
-    "artist": "Atif Aslam, Nusrat Fateh Ali Khan, Rochak Kohli",
-    "artistTag": "Atif Aslam",
-    "category": "soulful",
-    "youtubeId": "rkWJyMhIWLo",
-    "spotifyTrackId": "1scGwkyXNCl19wrBDhnAWg",
-    "spotifyUrl": "https://open.spotify.com/track/1scGwkyXNCl19wrBDhnAWg",
-    "duration": "4:16 min",
-    "genre": "Sufi Qawwali Reimagined",
-    "mood": "Heartbreak & Wonder",
-    "icon": "🥀",
-    "ayushNote": "Atif Aslam's haunting high pitch on Nusrat Saab's timeless poetry 'Woh jo kehte the bichdenge na hum kabhi...'. Instant tears."
-  },
-  {
-    "id": "ik-mulaqaat-dreamgirl",
-    "title": "Ik Mulaqaat",
-    "movie": "Dream Girl (2019)",
-    "artist": "Altamash Faridi, Palak Muchhal, Meet Bros",
-    "artistTag": "Soulful Hits",
-    "category": "soulful",
-    "youtubeId": "u5JRSsoBXT0",
-    "spotifyTrackId": "0ZKFgtiKL9jdmZeNZSuimi",
-    "spotifyUrl": "https://open.spotify.com/track/0ZKFgtiKL9jdmZeNZSuimi",
-    "duration": "4:08 min",
-    "genre": "Sufi Romantic Duet",
-    "mood": "First Date Magic",
-    "icon": "☕",
-    "ayushNote": "Sufi serenity blended with modern romantic storytelling. Altamash & Palak's chemistry on Ayushmann and Nushrratt is magical."
-  },
-  {
-    "id": "mere-rashke-qamar",
-    "title": "Mere Rashke Qamar",
-    "movie": "Baadshaho (2017)",
-    "artist": "Nusrat Fateh Ali Khan, Rahat Fateh Ali Khan",
-    "artistTag": "Soulful Hits",
-    "category": "soulful",
-    "youtubeId": "q8gilwzNQEA",
-    "spotifyTrackId": "50sbcAcWHgDPRDkYBEUpkA",
-    "spotifyUrl": "https://open.spotify.com/track/50sbcAcWHgDPRDkYBEUpkA",
-    "duration": "3:41 min",
-    "genre": "Sufi Qawwali Romance",
-    "mood": "Royalty & Timeless Passion",
-    "icon": "👑",
-    "ayushNote": "Nusrat Fateh Ali Khan and Rahat Fateh Ali Khan combined with harmonium and tabla. Pure royalty and eternal music magic."
-  },
-  {
-    "id": "salman-hangover",
-    "title": "Hangover",
-    "movie": "Kick (2014)",
-    "artist": "Salman Khan, Shreya Ghoshal, Meet Bros",
-    "artistTag": "Salman Hits",
-    "category": "salman",
-    "youtubeId": "1gqBb4Y7LJA",
-    "spotifyTrackId": "0mboVyI4R4MPH23yceAMz3",
-    "spotifyUrl": "https://open.spotify.com/track/0mboVyI4R4MPH23yceAMz3",
-    "duration": "6:16 min",
-    "genre": "Dreamy Pop Romance",
-    "mood": "Gentle Romantic High",
-    "icon": "🍷",
-    "ayushNote": "Salman Khan himself stepping into the recording booth alongside Shreya Ghoshal. The melody stays in your head for days."
-  },
-  {
-    "id": "mujhko-barsaat-bana-lo",
-    "title": "Mujhko Barsaat Bana Lo",
-    "movie": "Junooniyat (2016)",
-    "artist": "Armaan Malik, Jeet Gannguli",
-    "artistTag": "Soulful Hits",
-    "category": "soulful",
-    "youtubeId": "ShA1VtiEQXc",
-    "spotifyTrackId": "4jdwFk4GRRDNt3g49IgC15",
-    "spotifyUrl": "https://open.spotify.com/track/4jdwFk4GRRDNt3g49IgC15",
-    "duration": "4:26 min",
-    "genre": "Rain Romance Ballad",
-    "mood": "Deep Emotional Monsoon",
-    "icon": "⛈️",
-    "ayushNote": "Armaan Malik's tender voice on Jeet Gannguli's violin orchestration. Perfect for listening with raindrops tapping on your window."
-  },
-  {
-    "id": "locha-e-ulfat",
-    "title": "Locha-E-Ulfat",
-    "movie": "2 States (2014)",
-    "artist": "Benny Dayal, Shankar-Ehsaan-Loy",
-    "artistTag": "Party Hits",
-    "category": "bangers",
-    "youtubeId": "G6RR2_NQ530",
-    "spotifyTrackId": "3V3QbgrOZKtFv5MXzAAdZr",
-    "spotifyUrl": "https://open.spotify.com/track/3V3QbgrOZKtFv5MXzAAdZr",
-    "duration": "4:48 min",
-    "genre": "Upbeat College Pop",
-    "mood": "Hilarious Love Confusion",
-    "icon": "⚡",
-    "ayushNote": "Benny Dayal's energetic vocals describing the beautiful chaos of falling head-over-heels in love. IIM Ahmedabad campus nostalgia!"
-  },
-  {
-    "id": "srk-tere-liye",
-    "title": "Tere Liye",
-    "movie": "Veer-Zaara (2004)",
-    "artist": "Lata Mangeshkar, Roop Kumar Rathod, Madan Mohan",
-    "artistTag": "Sonu Nigam",
-    "category": "nostalgia",
-    "youtubeId": "jo6iAkSoraY",
-    "spotifyTrackId": "3i11e2jzUtO3jChiFl3v9x",
-    "spotifyUrl": "https://open.spotify.com/track/3i11e2jzUtO3jChiFl3v9x",
-    "duration": "5:34 min",
-    "genre": "Immortal Classical Romance",
-    "mood": "22 Years of Eternal Devotion",
-    "icon": "🕊️",
-    "ayushNote": "Lata Mangeshkar's divine voice on Madan Mohan's revived treasure. SRK and Preity Zinta's legendary border-defying love story."
-  }
 ];
 
 const filteredSongs = computed(() => {
