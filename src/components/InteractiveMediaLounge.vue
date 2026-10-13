@@ -28,7 +28,7 @@
         @click="activeTab = 'movies'"
       >
         <span class="tab-icon">🎬</span>
-        <span class="tab-label-full">Movie Mood Matcher</span>
+        <span class="tab-label-full">2026 Cinema Vault</span>
         <span class="tab-label-short">Movies</span>
       </button>
       <button 
@@ -319,69 +319,177 @@
     </div>
 
 
-    <!-- TAB 2: MOVIE MOOD MATCHER -->
+    <!-- TAB 2: 2026 CINEMA VAULT (MODERN MOVIES SECTION) -->
     <div v-if="activeTab === 'movies'" class="tab-content movie-content">
-      <div class="mood-selector-wrap">
-        <label class="mood-label">Pick Your Current Cinema Mood:</label>
-        <div class="mood-chips">
+      <div class="movies-vault-wrapper">
+        <!-- Vault Section Header -->
+        <div class="vault-hero-bar">
+          <div class="vault-titles">
+            <h4>Curated 2026 Cinema Vault</h4>
+            <p class="vault-subtitle">
+              Verified Releases (by Oct 13, 2026) • In-Depth Reviews, Pros &amp; Cons, Language Audits &amp; Official Studio Trailers
+            </p>
+          </div>
+          <div class="vault-counter-pill">
+            <span>{{ filteredMovies.length }} of {{ moviesData.length }} Movies Available</span>
+          </div>
+        </div>
+
+        <!-- Category Tabs Navigation -->
+        <div class="movie-category-nav">
           <button 
-            v-for="mood in movieMoods" 
-            :key="mood.id"
-            :class="['mood-chip', { active: selectedMood === mood.id }]"
-            @click="selectedMood = mood.id"
+            v-for="cat in movieCategories" 
+            :key="cat.id"
+            type="button"
+            :class="['movie-cat-tab-btn', { active: selectedMovieCategory === cat.id }]"
+            @click="selectedMovieCategory = cat.id"
           >
-            {{ mood.label }}
+            <span class="cat-tab-label">{{ cat.label }}</span>
+            <span class="cat-tab-count">{{ cat.count }}</span>
+          </button>
+        </div>
+
+        <!-- Search, Filter & Sort Toolbar -->
+        <div class="movie-controls-toolbar">
+          <div class="movie-search-field">
+            <span class="search-ico">🔍</span>
+            <input 
+              v-model="movieSearchQuery" 
+              type="text" 
+              placeholder="Search by title, genre, actor (Ajay, Vijay Sethupathi, Tom Holland), or director..."
+              class="movie-search-input"
+            />
+            <button 
+              v-if="movieSearchQuery" 
+              type="button" 
+              class="search-clear-btn" 
+              @click="movieSearchQuery = ''"
+              title="Clear search"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="movie-filter-dropdowns">
+            <div class="filter-select-wrap">
+              <label>Genre:</label>
+              <select v-model="selectedMovieGenre" class="movie-select">
+                <option v-for="g in movieGenresList" :key="g.id" :value="g.id">
+                  {{ g.label }}
+                </option>
+              </select>
+            </div>
+
+            <div class="filter-select-wrap">
+              <label>Sort By:</label>
+              <select v-model="selectedMovieSort" class="movie-select">
+                <option value="rating">Top Rated (Highest First)</option>
+                <option value="date">Release Date (Newest First)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Movies Cards Grid -->
+        <div v-if="filteredMovies.length > 0" class="movies-grid-layout">
+          <div 
+            v-for="movie in filteredMovies" 
+            :key="movie.id" 
+            class="modern-movie-card"
+          >
+            <!-- Card Poster Banner -->
+            <div class="card-poster-wrap" @click="openMovieDetails(movie, false)">
+              <img 
+                :src="movie.posterUrl" 
+                :alt="movie.title + ' poster'" 
+                class="card-poster-img"
+                loading="lazy"
+              />
+              <div class="poster-badges-overlay">
+                <span class="card-badge-date">{{ movie.releaseDayBadge }}</span>
+                <span class="card-badge-rating">★ {{ movie.rating }}</span>
+              </div>
+              <div class="poster-cat-badge">
+                {{ movie.categoryLabel }}
+              </div>
+              <div class="poster-hover-cta">
+                <span>View Details &amp; Trailer ↗</span>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-content-wrap">
+              <div class="card-header-meta">
+                <span class="card-genre-tag">{{ movie.genre }}</span>
+                <span 
+                  class="card-lang-tag" 
+                  :class="movie.isHindiDubbed ? 'lang-dubbed-yes' : 'lang-dubbed-no'"
+                  :title="movie.hindiStatusNote"
+                >
+                  {{ movie.isHindiDubbed ? '🇮🇳 Hindi Original / Dub' : '🌐 Tamil/Telugu (Dub Unverified)' }}
+                </span>
+              </div>
+
+              <h5 class="card-movie-title" @click="openMovieDetails(movie, false)">{{ movie.title }}</h5>
+              <div class="card-crew-row">
+                <span><strong>Dir:</strong> {{ movie.director }}</span>
+                <span>•</span>
+                <span><strong>Cast:</strong> {{ movie.cast[0] }}</span>
+              </div>
+
+              <p class="card-one-liner">{{ movie.shortDescription }}</p>
+
+              <div class="card-score-strip">
+                <div class="critics-snippet">
+                  <span class="critics-dot">●</span>
+                  <span>{{ movie.criticsRating }}</span>
+                </div>
+                <div class="verdict-tag-card">
+                  <span>{{ movie.verdict }}</span>
+                </div>
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="card-action-btns">
+                <button 
+                  type="button" 
+                  class="btn-card-details" 
+                  @click="openMovieDetails(movie, false)"
+                >
+                  <span>👁️ View Details</span>
+                </button>
+                <button 
+                  type="button" 
+                  class="btn-card-trailer" 
+                  @click="openMovieDetails(movie, true)"
+                >
+                  <span>▶ Trailer</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Zero State -->
+        <div v-else class="movie-zero-state">
+          <span class="zero-state-icon">🎬</span>
+          <h5>No Movies Found</h5>
+          <p>No titles matched your query in this category.</p>
+          <button type="button" class="btn-zero-reset" @click="resetMovieFilters">
+            Reset Filters &amp; Show All (9) Movies
           </button>
         </div>
       </div>
 
-      <div class="movie-curated-card">
-        <div class="movie-poster-col">
-          <div class="movie-mock-frame">
-            <span class="corner-ribbon">Ayush Score: {{ currentMovie.score }}</span>
-            <div class="poster-graphic" :style="{ background: currentMovie.bgGradient }">
-              <span class="cinema-icon">{{ currentMovie.icon }}</span>
-              <h5>{{ currentMovie.title }}</h5>
-              <span class="poster-year">{{ currentMovie.year }} • {{ currentMovie.runtime }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="movie-info-col">
-          <div class="movie-top-badges">
-            <span class="pill-genre">{{ currentMovie.genre }}</span>
-            <span class="pill-director">Director: {{ currentMovie.director }}</span>
-            <span class="pill-avail">Streaming: {{ currentMovie.platform }}</span>
-          </div>
-
-          <h4>{{ currentMovie.title }} ({{ currentMovie.year }})</h4>
-          <p class="movie-synopsis">{{ currentMovie.synopsis }}</p>
-
-          <div class="curator-quote">
-            <div class="quote-avatar">
-              <img :src="getAssetUrl('images/hero-ayush.jpg')" alt="Ayush Shrivastava" />
-            </div>
-            <div class="quote-text">
-              <strong>Ayush's Review Note:</strong>
-              <p>"{{ currentMovie.ayushQuote }}"</p>
-            </div>
-          </div>
-
-          <div class="movie-action-row">
-            <button class="btn-watchlist" @click="toggleWatchlist(currentMovie.title)">
-              {{ isInWatchlist(currentMovie.title) ? '✓ Saved in Watchlist' : '+ Add to Watchlist (' + watchlistCount + ')' }}
-            </button>
-            <a 
-              :href="'https://wa.me/919508678989?text=Hi%20Ayush,%20I%20want%20to%20discuss%20the%20movie%20' + encodeURIComponent(currentMovie.title)"
-              target="_blank" 
-              rel="noopener"
-              class="btn-discuss"
-            >
-              Discuss with Ayush on WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- Detail Modal -->
+      <MovieDetailModal 
+        v-if="selectedModalMovie" 
+        :movie="selectedModalMovie" 
+        :initial-scroll-to-trailer="modalScrollToTrailer"
+        :is-in-watchlist="watchlist.has(selectedModalMovie.id)"
+        @close="selectedModalMovie = null"
+        @toggle-watchlist="toggleMovieWatchlist"
+      />
     </div>
 
     <!-- TAB 3: GAMING BENCHMARKS -->
@@ -496,15 +604,24 @@ import { ref, computed } from 'vue';
 import { getAssetUrl } from '../utils/assets';
 import { songsData as hindiTracks } from '../data/songsData.js';
 import { gamesData as games } from '../data/gamesData.js';
+import { moviesData, movieCategories } from '../data/moviesData.js';
+import MovieDetailModal from './MovieDetailModal.vue';
 
 
 // State
 const activeTab = ref('music');
-const selectedMood = ref('scifi');
 const selectedGameId = ref('cyberpunk-2077');
 const selectedResolution = ref('1440p High');
 const watchlist = ref(new Set());
 const watchlistCount = ref(0);
+
+// Movies Lounge State (2026 Verified Cinema Vault)
+const selectedMovieCategory = ref('all');
+const movieSearchQuery = ref('');
+const selectedMovieGenre = ref('all');
+const selectedMovieSort = ref('rating'); // 'rating' or 'date'
+const selectedModalMovie = ref(null);
+const modalScrollToTrailer = ref(false);
 
 // Gaming Category Filters
 const selectedGameCategory = ref('All (37)');
@@ -596,98 +713,70 @@ const currentSong = computed(() => {
 });
 
 
-// Movies Data
-const movieMoods = [
-  { id: 'scifi', label: 'Mind-Bending Sci-Fi 🚀' },
-  { id: 'noir', label: 'Late Night Crime & Noir 🕵️' },
-  { id: 'heartfelt', label: 'Heartfelt Indie Cinema 🌿' },
-  { id: 'adrenaline', label: 'Adrenaline High-Stakes 💥' },
-  { id: 'retro', label: 'Cult Classic Masterpiece 📼' }
+// Movies Data & Filtering Logic (2026 Cinema Vault)
+const movieGenresList = [
+  { id: 'all', label: 'All Genres' },
+  { id: 'thriller', label: 'Crime Thrillers' },
+  { id: 'comedy', label: 'Comedy & Campus' },
+  { id: 'psychological', label: 'Psychological' },
+  { id: 'investigative', label: 'Investigative' },
+  { id: 'drama', label: 'Emotional Drama' },
+  { id: 'romance', label: 'Romantic Fantasy' },
+  { id: 'heist', label: 'Action & Heist' },
+  { id: 'fantasy', label: 'Fantasy Adventure' },
+  { id: 'superhero', label: 'Superhero Action' }
 ];
 
-const moviesMap = {
-  scifi: {
-    title: 'Interstellar',
-    year: '2014',
-    runtime: '169 min',
-    director: 'Christopher Nolan',
-    genre: 'Sci-Fi / Space Odyssey',
-    score: '9.8',
-    platform: 'Prime Video / Netflix',
-    icon: '🪐',
-    bgGradient: 'linear-gradient(135deg, #091E3A 0%, #2F80ED 50%, #2D9CDB 100%)',
-    synopsis: 'A team of explorers travels through a wormhole in space in an attempt to ensure humanity\'s survival as Earth faces catastrophic famine.',
-    ayushQuote: 'Hans Zimmer\'s organ score coupled with the gravitational time dilation on Miller\'s planet will give you goosebumps every single time.'
-  },
-  noir: {
-    title: 'Blade Runner 2049',
-    year: '2017',
-    runtime: '164 min',
-    director: 'Denis Villeneuve',
-    genre: 'Neo-Noir / Cyberpunk',
-    score: '9.6',
-    platform: 'Sony LIV / Prime',
-    icon: '🏙️',
-    bgGradient: 'linear-gradient(135deg, #1A002C 0%, #6B117B 50%, #FF6584 100%)',
-    synopsis: 'Young Blade Runner K discovers a long-buried secret that leads him to track down former Blade Runner Rick Deckard, who\'s been missing for thirty years.',
-    ayushQuote: 'Roger Deakins\' cinematography here is pure poetry. Every single frame deserves to be hung in an art gallery.'
-  },
-  heartfelt: {
-    title: 'Past Lives',
-    year: '2023',
-    runtime: '106 min',
-    director: 'Celine Song',
-    genre: 'Romantic Drama / Indie',
-    score: '9.5',
-    platform: 'Lionsgate Play / Apple TV',
-    icon: '🌸',
-    bgGradient: 'linear-gradient(135deg, #2D142C 0%, #510A32 50%, #C72C41 100%)',
-    synopsis: 'Nora and Hae Sung, two deeply connected childhood friends, are separated after Nora\'s family emigrates from South Korea. Two decades later, they reunite.',
-    ayushQuote: 'A devastatingly beautiful meditation on \'In-Yun\' (destiny) and the roads not taken. Subtle, quiet, and heartbreakingly real.'
-  },
-  adrenaline: {
-    title: 'Mad Max: Fury Road',
-    year: '2015',
-    runtime: '120 min',
-    director: 'George Miller',
-    genre: 'Post-Apocalyptic Action',
-    score: '9.7',
-    platform: 'JioCinema / Prime',
-    icon: '🔥',
-    bgGradient: 'linear-gradient(135deg, #4A1204 0%, #A83210 50%, #F59E0B 100%)',
-    synopsis: 'In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search of her homeland with the aid of a group of female prisoners and a drifter.',
-    ayushQuote: 'Pure visual adrenaline. Practical stunts, a flame-throwing guitarist, and pacing that never lets you breathe for a second.'
-  },
-  retro: {
-    title: 'Taxi Driver',
-    year: '1976',
-    runtime: '114 min',
-    director: 'Martin Scorsese',
-    genre: 'Psychological Thriller',
-    score: '9.4',
-    platform: 'Netflix / Apple TV',
-    icon: '🚖',
-    bgGradient: 'linear-gradient(135deg, #1C1917 0%, #44403C 50%, #78716C 100%)',
-    synopsis: 'A mentally unstable veteran works as a nighttime taxi driver in New York City, where the perceived decadence fuels his urge for violent action.',
-    ayushQuote: 'De Niro\'s iconic portrait of urban alienation in rainy 70s Manhattan. Bernard Herrmann\'s jazz score is unforgettable.'
-  }
-};
-
-const currentMovie = computed(() => {
-  return moviesMap[selectedMood.value] || moviesMap.scifi;
+const filteredMovies = computed(() => {
+  return moviesData.filter(movie => {
+    // 1. Category filter
+    if (selectedMovieCategory.value !== 'all' && movie.category !== selectedMovieCategory.value) {
+      return false;
+    }
+    // 2. Search query filter (matches title, genre, director, cast, franchise)
+    if (movieSearchQuery.value && movieSearchQuery.value.trim()) {
+      const q = movieSearchQuery.value.toLowerCase().trim();
+      const castStr = movie.cast.join(' ').toLowerCase();
+      const matchText = `${movie.title} ${movie.genre} ${movie.director} ${castStr} ${movie.franchise}`.toLowerCase();
+      if (!matchText.includes(q)) return false;
+    }
+    // 3. Genre filter
+    if (selectedMovieGenre.value !== 'all') {
+      if (!movie.genre.toLowerCase().includes(selectedMovieGenre.value.toLowerCase())) {
+        return false;
+      }
+    }
+    return true;
+  }).sort((a, b) => {
+    if (selectedMovieSort.value === 'rating') {
+      return parseFloat(b.rating) - parseFloat(a.rating);
+    }
+    if (selectedMovieSort.value === 'date') {
+      return new Date(b.releaseDate) - new Date(a.releaseDate);
+    }
+    return 0;
+  });
 });
 
-function isInWatchlist(title) {
-  return watchlist.value.has(title);
+function openMovieDetails(movie, scrollToTrailer = false) {
+  selectedModalMovie.value = movie;
+  modalScrollToTrailer.value = scrollToTrailer;
 }
 
-function toggleWatchlist(title) {
-  if (watchlist.value.has(title)) {
-    watchlist.value.delete(title);
+function toggleMovieWatchlist(id) {
+  if (watchlist.value.has(id)) {
+    watchlist.value.delete(id);
   } else {
-    watchlist.value.add(title);
+    watchlist.value.add(id);
   }
   watchlistCount.value = watchlist.value.size;
+}
+
+function resetMovieFilters() {
+  selectedMovieCategory.value = 'all';
+  movieSearchQuery.value = '';
+  selectedMovieGenre.value = 'all';
+  selectedMovieSort.value = 'rating';
 }
 
 const currentGame = computed(() => {
@@ -1574,206 +1663,542 @@ const verdictClass = computed(() => {
   transform: translateY(-2px);
 }
 
-/* Movie Tab */
-.mood-selector-wrap {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.mood-label {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #CBD5E1;
-  margin-bottom: 0.8rem;
-}
-
-.mood-chips {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.mood-chip {
-  background: #1E293B;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #CBD5E1;
-  padding: 0.6rem 1.2rem;
-  border-radius: 9999px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.mood-chip:hover {
-  background: #334155;
-  color: #FFFFFF;
-}
-
-.mood-chip.active {
-  background: var(--accent-gold-gradient);
-  color: #0B0F19;
-  font-weight: 700;
-  border-color: #F59E0B;
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
-}
-
-.movie-curated-card {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 2.5rem;
-  background: #141B2D;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-xl);
-  padding: 2.2rem;
-  align-items: center;
-}
-
-.movie-mock-frame {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-}
-
-.corner-ribbon {
-  position: absolute;
-  top: 14px;
-  right: -32px;
-  background: #F59E0B;
-  color: #0B0F19;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.3rem 2.5rem;
-  transform: rotate(45deg);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-}
-
-.poster-graphic {
-  min-height: 320px;
-  padding: 2rem;
+/* --------------------------------------------------------------------------
+   TAB 2: 2026 CINEMA VAULT (MODERN MOVIES SECTION)
+   -------------------------------------------------------------------------- */
+.movies-vault-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+/* Vault Hero Bar */
+.vault-hero-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.vault-titles h4 {
+  font-size: 1.6rem;
+  font-weight: 800;
   color: #FFFFFF;
-  position: relative;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
 }
 
-.cinema-icon {
-  font-size: 3.5rem;
-  margin-bottom: auto;
+.vault-subtitle {
+  font-size: 0.88rem;
+  color: #94A3B8;
+  margin: 0;
+  max-width: 650px;
+  line-height: 1.4;
 }
 
-.poster-graphic h5 {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
+.vault-counter-pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  white-space: nowrap;
 }
 
-.poster-year {
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-.movie-top-badges {
+/* Category Tabs Navigation */
+.movie-category-nav {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
-.pill-genre, .pill-director, .pill-avail {
-  font-size: 0.78rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.08);
+.movie-cat-tab-btn {
+  background: #141B2D;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   color: #CBD5E1;
-}
-
-.pill-genre {
-  background: rgba(79, 70, 229, 0.25);
-  color: #A5B4FC;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-size: 0.88rem;
   font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: all 0.2s ease;
 }
 
-.movie-info-col h4 {
-  font-size: 1.8rem;
+.movie-cat-tab-btn:hover {
+  background: #1E293B;
   color: #FFFFFF;
-  margin-bottom: 0.85rem;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.movie-synopsis {
-  color: #94A3B8;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  margin-bottom: 1.4rem;
+.movie-cat-tab-btn.active {
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  color: #FFFFFF;
+  border-color: #6366F1;
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.35);
 }
 
-.curator-quote {
+.cat-tab-count {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+}
+
+.movie-cat-tab-btn.active .cat-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+/* Search & Toolbar */
+.movie-controls-toolbar {
   display: flex;
   gap: 1rem;
-  background: rgba(30, 41, 59, 0.5);
-  border-left: 3px solid #F59E0B;
-  padding: 1rem 1.2rem;
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  margin-bottom: 1.8rem;
-}
-
-.quote-avatar img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #F59E0B;
-}
-
-.quote-text strong {
-  font-size: 0.85rem;
-  color: #FBBF24;
-}
-
-.quote-text p {
-  font-size: 0.92rem;
-  color: #E2E8F0;
-  font-style: italic;
-  margin-top: 0.2rem;
-}
-
-.movie-action-row {
-  display: flex;
-  gap: 1rem;
+  background: #141B2D;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-.btn-watchlist {
-  background: var(--primary);
-  color: #FFFFFF;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.92rem;
-  transition: all 0.2s ease;
-}
-
-.btn-watchlist:hover {
-  background: var(--primary-hover);
-}
-
-.btn-discuss {
-  background: #25D366;
-  color: #FFFFFF;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.92rem;
-  display: inline-flex;
+.movie-search-field {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+  display: flex;
   align-items: center;
+}
+
+.movie-search-field .search-ico {
+  position: absolute;
+  left: 12px;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.movie-search-input {
+  width: 100%;
+  background: #0B1120;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.6rem 2.2rem 0.6rem 2.3rem;
+  color: #F8FAFC;
+  font-size: 0.88rem;
+  outline: none;
   transition: all 0.2s ease;
 }
 
-.btn-discuss:hover {
-  background: #1EBE5D;
+.movie-search-input:focus {
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.search-clear-btn:hover {
+  color: #FFFFFF;
+}
+
+.movie-filter-dropdowns {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: #94A3B8;
+  font-weight: 600;
+}
+
+.movie-select {
+  background: #0B1120;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #F1F5F9;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.82rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.movie-select:focus {
+  border-color: #6366F1;
+}
+
+/* Movie Cards Grid */
+.movies-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.modern-movie-card {
+  background: #141B2D;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.modern-movie-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 18px 36px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.15);
+}
+
+.card-poster-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #0B1120;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.modern-movie-card:hover .card-poster-img {
+  transform: scale(1.05);
+}
+
+.poster-badges-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-badge-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(6px);
+  color: #CBD5E1;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-badge-rating {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(6px);
+  color: #FBBF24;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.poster-cat-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  color: #A5B4FC;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  z-index: 2;
+}
+
+.poster-hover-cta {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 17, 32, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 3;
+}
+
+.card-poster-wrap:hover .poster-hover-cta {
+  opacity: 1;
+}
+
+.card-content-wrap {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-header-meta {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.card-genre-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(79, 70, 229, 0.2);
+  color: #C7D2FE;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.card-lang-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.lang-dubbed-yes {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6EE7B7;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.lang-dubbed-no {
+  background: rgba(245, 158, 11, 0.12);
+  color: #FCD34D;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.card-movie-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.card-movie-title:hover {
+  color: #FBBF24;
+}
+
+.card-crew-row {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: #94A3B8;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.card-crew-row strong {
+  color: #CBD5E1;
+}
+
+.card-one-liner {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  line-height: 1.5;
+  margin-bottom: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-score-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.45rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+
+.critics-snippet {
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.critics-dot {
+  color: #38BDF8;
+  font-size: 0.65rem;
+}
+
+.verdict-tag-card {
+  color: #34D399;
+  font-weight: 700;
+}
+
+/* Card Action Buttons */
+.card-action-btns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+.btn-card-details {
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 9px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.btn-card-details:hover {
+  background: linear-gradient(135deg, #4338CA 0%, #4F46E5 100%);
+  transform: translateY(-1px);
+}
+
+.btn-card-trailer {
+  background: rgba(220, 38, 38, 0.15);
+  color: #F87171;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 9px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.btn-card-trailer:hover {
+  background: #DC2626;
+  color: #FFFFFF;
+  border-color: #DC2626;
+  transform: translateY(-1px);
+}
+
+/* Zero state */
+.movie-zero-state {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: #141B2D;
+  border-radius: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.zero-state-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.movie-zero-state h5 {
+  font-size: 1.3rem;
+  color: #FFFFFF;
+  margin-bottom: 0.4rem;
+}
+
+.movie-zero-state p {
+  color: #94A3B8;
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.btn-zero-reset {
+  background: #4F46E5;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-zero-reset:hover {
+  background: #4338CA;
+}
+
+/* Responsive Grid for Movies */
+@media (max-width: 1024px) {
+  .movies-grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .movies-grid-layout {
+    grid-template-columns: 1fr;
+  }
+  .vault-hero-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .movie-controls-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .movie-filter-dropdowns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filter-select-wrap {
+    justify-content: space-between;
+  }
+  .movie-select {
+    flex: 1;
+  }
+  .card-action-btns {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Gaming Tab */
@@ -2043,7 +2468,7 @@ const verdictClass = computed(() => {
    INTERACTIVE MEDIA LOUNGE RESPONSIVE DESIGN (ALL DEVICES)
    -------------------------------------------------------------------------- */
 @media (max-width: 980px) {
-  .music-card-grid, .movie-curated-card, .gaming-tool-grid {
+  .music-card-grid, .gaming-tool-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
