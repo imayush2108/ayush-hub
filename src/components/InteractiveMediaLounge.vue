@@ -1193,11 +1193,11 @@ const verdictClass = computed(() => {
   line-height: 1.35;
 }
 
-/* Controls - Compact 3-Button Grid Row */
+/* Controls - 2x2 Grid (Row 1: Spotify + YouTube | Row 2: Lyrics + WhatsApp) */
 .deck-controls-hindi {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.45rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
 }
 
 .deck-controls-hindi .ctrl-btn {
@@ -1205,13 +1205,14 @@ const verdictClass = computed(() => {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.55rem 0.4rem;
-  border-radius: 8px;
-  font-size: 0.76rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 9px;
+  font-size: 0.82rem;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s ease;
+  width: 100%;
 }
 
 .btn-yt-watch {
