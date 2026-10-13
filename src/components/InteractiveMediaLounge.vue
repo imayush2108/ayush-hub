@@ -390,16 +390,33 @@
         <!-- Controls -->
         <div class="benchmark-controls">
           <div class="control-group">
-            <label>Select Game Title:</label>
+            <div class="game-select-header-row">
+              <label>Select Game Title:</label>
+              <span class="game-count-badge">{{ filteredGames.length }} Games</span>
+            </div>
+
+            <!-- Quick Game Category Filter Pills -->
+            <div class="game-cat-chips-row">
+              <button 
+                v-for="cat in gameCategoryFilters" 
+                :key="cat"
+                type="button"
+                :class="['game-cat-chip-btn', { active: selectedGameCategory === cat }]"
+                @click="onSelectGameCategory(cat)"
+              >
+                {{ cat }}
+              </button>
+            </div>
+
             <select v-model="selectedGameId" class="game-select">
-              <option v-for="game in games" :key="game.id" :value="game.id">
+              <option v-for="game in filteredGames" :key="game.id" :value="game.id">
                 {{ game.name }} ({{ game.genre }})
               </option>
             </select>
           </div>
 
           <div class="control-group">
-            <label>Testing Resolution & Quality:</label>
+            <label>Testing Resolution &amp; Quality:</label>
             <div class="res-buttons">
               <button 
                 v-for="res in ['1080p Ultra', '1440p High', '4K Cinematic']" 
@@ -427,7 +444,7 @@
         <div class="benchmark-result-card">
           <div class="result-header">
             <div>
-              <span class="game-tag">{{ currentGame.genre }}</span>
+              <span class="game-tag">{{ currentGame.category }} • {{ currentGame.genre }}</span>
               <h4>{{ currentGame.name }}</h4>
             </div>
             <div class="fps-meter">
@@ -478,15 +495,47 @@
 import { ref, computed } from 'vue';
 import { getAssetUrl } from '../utils/assets';
 import { songsData as hindiTracks } from '../data/songsData.js';
+import { gamesData as games } from '../data/gamesData.js';
 
 
 // State
 const activeTab = ref('music');
 const selectedMood = ref('scifi');
-const selectedGameId = ref('cyberpunk');
+const selectedGameId = ref('cyberpunk-2077');
 const selectedResolution = ref('1440p High');
 const watchlist = ref(new Set());
 const watchlistCount = ref(0);
+
+// Gaming Category Filters
+const selectedGameCategory = ref('All (37)');
+const gameCategoryFilters = [
+  'All (37)',
+  'Ray Tracing',
+  'PlayStation',
+  'Open World',
+  'Action RPG',
+  'Esports / MP',
+  'Upcoming'
+];
+
+const filteredGames = computed(() => {
+  if (selectedGameCategory.value === 'All (37)') return games;
+  if (selectedGameCategory.value === 'Ray Tracing') return games.filter(g => g.category === 'Ray Tracing Showcase');
+  if (selectedGameCategory.value === 'PlayStation') return games.filter(g => g.category === 'PlayStation Hits');
+  if (selectedGameCategory.value === 'Open World') return games.filter(g => g.category === 'Open World Masterpiece');
+  if (selectedGameCategory.value === 'Action RPG') return games.filter(g => g.category === 'Action RPG');
+  if (selectedGameCategory.value === 'Esports / MP') return games.filter(g => g.category === 'Esports & Multiplayer');
+  if (selectedGameCategory.value === 'Upcoming') return games.filter(g => g.category === 'Upcoming Anticipated');
+  return games;
+});
+
+function onSelectGameCategory(cat) {
+  selectedGameCategory.value = cat;
+  const list = filteredGames.value;
+  if (list.length > 0 && !list.some(g => g.id === selectedGameId.value)) {
+    selectedGameId.value = list[0].id;
+  }
+}
 
 // Hindi Music Lounge State (Ayush's Favorite Bollywood & Soulful Hits)
 const isAudioPlaying = ref(true);
@@ -640,54 +689,6 @@ function toggleWatchlist(title) {
   }
   watchlistCount.value = watchlist.value.size;
 }
-
-// Gaming Data
-const games = [
-  {
-    id: 'cyberpunk',
-    name: 'Cyberpunk 2077: Phantom Liberty',
-    genre: 'RPG / Open World',
-    baseFps: { '1080p Ultra': 118, '1440p High': 92, '4K Cinematic': 64 },
-    rating: '9.6',
-    verdict: 'Visual Showcase of the Decade',
-    rayTracing: 'Path Tracing Enabled (DLSS 3.5)',
-    recommendedGpu: 'RTX 3070 or better',
-    ayushNote: 'Night City after the 2.0 update and Phantom Liberty expansion is the pinnacle of immersive world design.'
-  },
-  {
-    id: 'eldenring',
-    name: 'Elden Ring: Shadow of the Erdtree',
-    genre: 'Action RPG / Souls-like',
-    baseFps: { '1080p Ultra': 144, '1440p High': 120, '4K Cinematic': 60 },
-    rating: '9.9',
-    verdict: 'Masterpiece of Exploration & Combat',
-    rayTracing: 'Optional Ambient Occlusion',
-    recommendedGpu: 'RTX 3060 / RX 6700',
-    ayushNote: 'FromSoftware delivered gold. The sense of discovery in the Land of Shadow is unmatched in modern gaming history.'
-  },
-  {
-    id: 'valorant',
-    name: 'Valorant',
-    genre: 'Tactical Competitive FPS',
-    baseFps: { '1080p Ultra': 420, '1440p High': 360, '4K Cinematic': 240 },
-    rating: '8.8',
-    verdict: 'Ultra-Responsive Esports King',
-    rayTracing: 'N/A (Esports Optimized)',
-    recommendedGpu: 'GTX 1650 or higher',
-    ayushNote: 'Butter-smooth gunplay and crisp hit registration. Join my lobby if you want to climb ranked together!'
-  },
-  {
-    id: 'rdr2',
-    name: 'Red Dead Redemption 2',
-    genre: 'Western / Cinematic Adventure',
-    baseFps: { '1080p Ultra': 125, '1440p High': 98, '4K Cinematic': 72 },
-    rating: '9.8',
-    verdict: 'The Most Detailed World Ever Built',
-    rayTracing: 'High Ambient Lighting',
-    recommendedGpu: 'RTX 3060 Ti / RX 6800',
-    ayushNote: 'Arthur Morgan\'s redemption arc will stay in your heart forever. The ecosystem simulation still beats everything in 2026.'
-  }
-];
 
 const currentGame = computed(() => {
   return games.find(g => g.id === selectedGameId.value) || games[0];
@@ -1799,6 +1800,67 @@ const verdictClass = computed(() => {
   font-weight: 600;
   color: #CBD5E1;
   margin-bottom: 0.6rem;
+}
+
+.game-select-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.game-select-header-row label {
+  margin-bottom: 0;
+}
+
+.game-count-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #F59E0B;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.15rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.game-cat-chips-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.game-cat-chips-row::-webkit-scrollbar {
+  display: none;
+}
+
+.game-cat-chip-btn {
+  flex-shrink: 0;
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.game-cat-chip-btn:hover {
+  color: #FFFFFF;
+  background: rgba(49, 65, 96, 0.8);
+}
+
+.game-cat-chip-btn.active {
+  background: #F59E0B;
+  color: #0F172A;
+  border-color: #F59E0B;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
 }
 
 .game-select {
