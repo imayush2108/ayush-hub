@@ -2466,26 +2466,48 @@
 
 @media (max-width: 768px) {
   #media-lounge {
-    scroll-margin-top: 70px;
+    scroll-margin-top: 90px;
   }
 
   .section-lounge {
-    padding-top: 1.8rem !important;
-    padding-bottom: 2.2rem !important;
+    padding-top: 2.2rem !important;
+    padding-bottom: 2.4rem !important;
   }
 
   .section-lounge .section-title-wrap {
-    margin-bottom: 1.1rem !important;
+    margin-bottom: 0.95rem !important;
   }
 
   .section-lounge .section-heading {
-    font-size: 1.55rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word;
+  }
+
+  .section-lounge .section-subtext {
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #media-lounge {
+    scroll-margin-top: 92px;
+  }
+
+  .section-lounge {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .section-lounge .section-heading {
+    font-size: 1.22rem !important;
     line-height: 1.25 !important;
   }
 
   .section-lounge .section-subtext {
-    font-size: 0.85rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
   }
 }
 

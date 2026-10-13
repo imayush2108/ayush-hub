@@ -2480,8 +2480,11 @@ const verdictClass = computed(() => {
 
 @media (max-width: 768px) {
   .vue-media-lounge {
-    padding: 1.15rem 0.85rem 1.5rem 0.85rem;
+    padding: 0.85rem 0.65rem 1.15rem 0.65rem;
     border-radius: var(--radius-lg);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   /* Hide duplicate inner header on mobile to avoid overlap */
@@ -2500,36 +2503,42 @@ const verdictClass = computed(() => {
 
   .lounge-tabs {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 0.45rem !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.35rem !important;
     width: 100% !important;
-    margin-bottom: 1.1rem !important;
+    margin-bottom: 0.85rem !important;
   }
 
   .lounge-tab-btn {
     width: 100% !important;
-    padding: 0.55rem 0.25rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.48rem 0.2rem !important;
+    font-size: 0.76rem !important;
     font-weight: 700 !important;
     text-align: center !important;
     justify-content: center !important;
-    gap: 0.35rem !important;
+    gap: 0.25rem !important;
     border-radius: 9999px !important;
     white-space: nowrap !important;
   }
 
-  /* Artist Filter Horizontal Scroller */
+  .tab-icon {
+    font-size: 0.88rem !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     AUDIO LOUNGE MOBILE RESPONSIVE
+     -------------------------------------------------------------------------- */
   .artist-filters-row {
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 0.4rem !important;
-    margin-bottom: 0.95rem !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.75rem !important;
     width: 100% !important;
   }
 
   .filter-lead-label {
-    font-size: 0.78rem !important;
+    font-size: 0.76rem !important;
     font-weight: 700 !important;
     color: #F59E0B !important;
   }
@@ -2540,9 +2549,9 @@ const verdictClass = computed(() => {
     flex-wrap: nowrap !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none !important;
-    padding-bottom: 0.35rem !important;
+    padding-bottom: 0.25rem !important;
     width: 100% !important;
-    gap: 0.45rem !important;
+    gap: 0.35rem !important;
   }
 
   .artist-chips-wrap::-webkit-scrollbar {
@@ -2552,31 +2561,40 @@ const verdictClass = computed(() => {
   .artist-chip {
     flex-shrink: 0 !important;
     white-space: nowrap !important;
-    font-size: 0.76rem !important;
-    padding: 0.35rem 0.75rem !important;
+    font-size: 0.72rem !important;
+    padding: 0.28rem 0.65rem !important;
+  }
+
+  .music-card-grid {
+    gap: 0.85rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   /* Player Deck */
   .player-deck {
-    padding: 1rem 0.85rem !important;
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 12px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .deck-top {
     display: flex !important;
-    gap: 0.75rem !important;
+    gap: 0.65rem !important;
     align-items: center !important;
-    margin-bottom: 0.75rem !important;
+    margin-bottom: 0.65rem !important;
   }
 
   .vinyl-display {
-    width: 52px !important;
-    height: 52px !important;
+    width: 48px !important;
+    height: 48px !important;
     flex-shrink: 0 !important;
   }
 
   .vinyl-inner {
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .deck-meta {
@@ -2585,10 +2603,16 @@ const verdictClass = computed(() => {
     overflow: hidden !important;
   }
 
+  .deck-pill {
+    font-size: 0.65rem !important;
+    padding: 0.12rem 0.45rem !important;
+    border-radius: 9999px !important;
+  }
+
   .deck-meta h4 {
-    font-size: 1.15rem !important;
+    font-size: 1.05rem !important;
     font-weight: 800 !important;
-    line-height: 1.25 !important;
+    line-height: 1.2 !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -2596,102 +2620,119 @@ const verdictClass = computed(() => {
   }
 
   .track-desc {
-    font-size: 0.76rem !important;
+    font-size: 0.74rem !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    margin-bottom: 0.35rem !important;
+    margin-bottom: 0.25rem !important;
   }
 
   .track-tags {
     display: flex !important;
-    gap: 0.35rem !important;
+    gap: 0.25rem !important;
     flex-wrap: wrap !important;
   }
 
   .track-tag {
-    font-size: 0.68rem !important;
-    padding: 0.15rem 0.45rem !important;
-    border-radius: 6px !important;
+    font-size: 0.65rem !important;
+    padding: 0.12rem 0.42rem !important;
+    border-radius: 5px !important;
     white-space: nowrap !important;
   }
 
   .deck-page-link-wrap {
-    margin-top: 0.65rem !important;
+    margin-top: 0.45rem !important;
   }
 
   .deck-direct-page-btn {
-    font-size: 0.76rem !important;
-    padding: 0.4rem 0.85rem !important;
+    font-size: 0.72rem !important;
+    padding: 0.32rem 0.65rem !important;
+    border-radius: 6px !important;
   }
 
   /* Embedded Player Box */
+  .full-song-embed-box {
+    border-radius: 10px !important;
+    margin-bottom: 0.65rem !important;
+    overflow: hidden !important;
+  }
+
   .full-song-iframe {
     width: 100% !important;
     aspect-ratio: 16 / 9 !important;
     height: auto !important;
-    max-height: 210px !important;
+    max-height: 185px !important;
   }
 
   .spotify-song-iframe {
     height: 152px !important;
+    width: 100% !important;
   }
 
   .video-player-topbar {
-    padding: 0.4rem 0.65rem !important;
+    padding: 0.35rem 0.55rem !important;
   }
 
   .engine-tab-btn {
-    font-size: 0.7rem !important;
-    padding: 0.25rem 0.55rem !important;
+    font-size: 0.68rem !important;
+    padding: 0.2rem 0.5rem !important;
   }
 
   .video-duration-pill {
-    font-size: 0.68rem !important;
-    padding: 0.15rem 0.45rem !important;
+    font-size: 0.65rem !important;
+    padding: 0.12rem 0.4rem !important;
   }
 
   .full-song-footer-tag {
-    padding: 0.4rem 0.65rem !important;
-    font-size: 0.7rem !important;
+    padding: 0.35rem 0.55rem !important;
+    font-size: 0.68rem !important;
+    gap: 0.35rem !important;
   }
 
   .video-meta-txt {
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
   }
 
   .tag-direct-yt, .tag-direct-spotify {
-    font-size: 0.66rem !important;
+    font-size: 0.64rem !important;
     padding: 0.15rem 0.45rem !important;
   }
 
+  .equalizer-strip {
+    height: 16px !important;
+    gap: 2px !important;
+    margin-bottom: 0.65rem !important;
+  }
+
   .curator-music-note {
-    padding: 0.55rem 0.75rem !important;
-    margin-bottom: 0.75rem !important;
-    gap: 0.65rem !important;
+    padding: 0.45rem 0.65rem !important;
+    margin-bottom: 0.65rem !important;
+    gap: 0.55rem !important;
+    border-radius: 0 8px 8px 0 !important;
   }
 
   .curator-mini-avatar img {
-    width: 32px !important;
-    height: 32px !important;
+    width: 30px !important;
+    height: 30px !important;
   }
 
   .curator-mini-text strong {
-    font-size: 0.74rem !important;
+    font-size: 0.72rem !important;
   }
 
   .curator-mini-text p {
-    font-size: 0.76rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.74rem !important;
+    line-height: 1.3 !important;
   }
 
-  /* 2x2 Symmetrical Grid Controls on Mobile & Tablet */
+  /* 2x2 Compact Grid Controls on Mobile */
   .deck-controls-hindi {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.55rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.45rem !important;
     width: 100% !important;
-    margin-top: 0.75rem !important;
+    margin-top: 0.65rem !important;
   }
 
   .deck-controls-hindi .ctrl-btn {
@@ -2699,27 +2740,49 @@ const verdictClass = computed(() => {
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
-    padding: 0.65rem 0.4rem !important;
-    font-size: 0.78rem !important;
+    min-width: 0 !important;
+    padding: 0.55rem 0.35rem !important;
+    font-size: 0.74rem !important;
     font-weight: 700 !important;
     white-space: nowrap !important;
-    border-radius: 9px !important;
+    border-radius: 8px !important;
     text-align: center !important;
     box-sizing: border-box !important;
   }
 
   /* Track list panel */
   .tracks-list-panel {
-    padding: 1rem 0.85rem !important;
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 12px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .tracks-panel-head {
+    margin-bottom: 0.55rem !important;
+  }
+
+  .panel-head-titles h5 {
+    font-size: 0.95rem !important;
+  }
+
+  .panel-head-sub {
+    font-size: 0.7rem !important;
+  }
+
+  .tracks-count-badge {
+    font-size: 0.68rem !important;
+    padding: 0.15rem 0.45rem !important;
   }
 
   .vault-search-box {
-    margin-bottom: 0.65rem !important;
+    margin-bottom: 0.55rem !important;
   }
 
   .vault-search-input {
-    font-size: 0.8rem !important;
-    padding: 0.5rem 0.75rem 0.5rem 2rem !important;
+    font-size: 0.76rem !important;
+    padding: 0.45rem 0.65rem 0.45rem 1.8rem !important;
+    border-radius: 7px !important;
   }
 
   .category-pills-row {
@@ -2728,8 +2791,8 @@ const verdictClass = computed(() => {
     flex-wrap: nowrap !important;
     -webkit-overflow-scrolling: touch !important;
     scrollbar-width: none !important;
-    gap: 0.35rem !important;
-    margin-bottom: 0.75rem !important;
+    gap: 0.3rem !important;
+    margin-bottom: 0.55rem !important;
     padding-bottom: 0.25rem !important;
     width: 100% !important;
   }
@@ -2741,24 +2804,30 @@ const verdictClass = computed(() => {
   .category-pill-btn {
     flex-shrink: 0 !important;
     white-space: nowrap !important;
-    font-size: 0.72rem !important;
-    padding: 0.25rem 0.65rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.22rem 0.55rem !important;
+  }
+
+  .tracks-scroll-list {
+    max-height: 250px !important;
+    gap: 0.35rem !important;
   }
 
   .track-select-card {
-    padding: 0.6rem 0.65rem !important;
-    gap: 0.6rem !important;
+    padding: 0.45rem 0.55rem !important;
+    gap: 0.45rem !important;
+    border-radius: 7px !important;
   }
 
   .track-info h6 {
-    font-size: 0.86rem !important;
+    font-size: 0.82rem !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
   }
 
   .track-info span {
-    font-size: 0.72rem !important;
+    font-size: 0.68rem !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -2767,20 +2836,22 @@ const verdictClass = computed(() => {
   .track-card-right {
     display: flex !important;
     align-items: center !important;
-    gap: 0.35rem !important;
+    gap: 0.3rem !important;
     flex-shrink: 0 !important;
   }
 
   .track-card-lyrics-link {
-    font-size: 0.68rem !important;
-    padding: 0.18rem 0.45rem !important;
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.4rem !important;
   }
 
   .track-time {
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
   }
 
-  /* Movie Matcher & Gaming Benchmarks Responsive */
+  /* --------------------------------------------------------------------------
+     MOVIE MATCHER RESPONSIVE
+     -------------------------------------------------------------------------- */
   .movie-mock-frame {
     max-width: 320px !important;
     margin: 0 auto !important;
@@ -2788,22 +2859,22 @@ const verdictClass = computed(() => {
   }
 
   .poster-graphic {
-    min-height: 220px !important;
-    padding: 1.2rem !important;
+    min-height: 200px !important;
+    padding: 1rem !important;
   }
 
   .poster-graphic h5 {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
   }
 
   .cinema-icon {
-    font-size: 2.8rem !important;
+    font-size: 2.5rem !important;
   }
 
   .movie-action-row {
     flex-direction: column !important;
     width: 100% !important;
-    gap: 0.65rem !important;
+    gap: 0.55rem !important;
   }
 
   .btn-watchlist, .btn-discuss {
@@ -2812,61 +2883,271 @@ const verdictClass = computed(() => {
     text-align: center !important;
   }
 
-  .benchmark-breakdown {
+  /* --------------------------------------------------------------------------
+     GAMING BENCHMARKS MOBILE RESPONSIVE
+     -------------------------------------------------------------------------- */
+  .gaming-tool-grid {
     grid-template-columns: 1fr !important;
-    gap: 0.65rem !important;
+    gap: 0.85rem !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  .resolution-selector {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+  .benchmark-controls {
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 12px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .control-group {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .game-select-header-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .game-select-header-row label {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    color: #F59E0B !important;
+    margin-bottom: 0 !important;
+  }
+
+  .game-count-badge {
+    font-size: 0.66rem !important;
+    padding: 0.12rem 0.45rem !important;
+  }
+
+  .game-cat-chips-row {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
     gap: 0.35rem !important;
+    margin-bottom: 0.65rem !important;
+    padding-bottom: 0.25rem !important;
+    width: 100% !important;
+  }
+
+  .game-cat-chips-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .game-cat-chip-btn {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.6rem !important;
+  }
+
+  .game-select {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 0.82rem !important;
+    padding: 0.55rem 0.65rem !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .control-group label {
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.35rem !important;
+    display: block !important;
+  }
+
+  /* Resolution buttons: 3 columns guaranteed with min-width: 0 */
+  .res-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.35rem !important;
+    width: 100% !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .res-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
     font-size: 0.72rem !important;
-    padding: 0.45rem 0.2rem !important;
+    padding: 0.48rem 0.15rem !important;
     text-align: center !important;
     justify-content: center !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 6px !important;
+  }
+
+  /* Rig specs box: 2x2 symmetrical grid on mobile */
+  .rig-specs-box {
+    padding: 0.65rem 0.75rem !important;
+    border-radius: 8px !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .rig-specs-box h6 {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.35rem !important;
+    font-weight: 700 !important;
+  }
+
+  .rig-specs-box ul {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.25rem 0.5rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 0.72rem !important;
+  }
+
+  .rig-specs-box li {
+    margin-bottom: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Benchmark result card */
+  .benchmark-result-card {
+    padding: 0.85rem 0.7rem !important;
+    border-radius: 12px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .result-header {
+    margin-bottom: 0.6rem !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+
+  .game-tag {
+    font-size: 0.68rem !important;
+  }
+
+  .result-header h4 {
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin-top: 0.15rem !important;
   }
 
   .fps-meter {
-    padding: 0.4rem 0.8rem !important;
+    padding: 0.3rem 0.6rem !important;
+    border-radius: 8px !important;
+    flex-shrink: 0 !important;
+    text-align: center !important;
   }
 
   .fps-number {
-    font-size: 1.8rem !important;
+    font-size: 1.55rem !important;
+    line-height: 1 !important;
   }
 
-  .benchmark-controls, .benchmark-result-card {
-    padding: 1.1rem 0.85rem !important;
+  .fps-label {
+    font-size: 0.62rem !important;
+  }
+
+  .verdict-banner {
+    font-size: 0.74rem !important;
+    padding: 0.4rem 0.65rem !important;
+    margin-bottom: 0.65rem !important;
+    border-radius: 7px !important;
+    gap: 0.45rem !important;
+  }
+
+  /* 3-column compact metric breakdown bar */
+  .benchmark-breakdown {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.35rem !important;
+    padding: 0.55rem 0.35rem !important;
+    margin-bottom: 0.65rem !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+  }
+
+  .metric-item {
+    min-width: 0 !important;
+    padding: 0.25rem 0.15rem !important;
+  }
+
+  .metric-item span {
+    font-size: 0.62rem !important;
+    line-height: 1.15 !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .metric-item strong {
+    font-size: 0.8rem !important;
+    margin-top: 0.15rem !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .gamer-note {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.65rem !important;
+    padding: 0.45rem 0.65rem !important;
+    border-radius: 7px !important;
+    background: rgba(30, 41, 59, 0.4) !important;
   }
 
   .btn-gamer-squad {
-    font-size: 0.85rem !important;
-    padding: 0.8rem 1rem !important;
+    font-size: 0.78rem !important;
+    padding: 0.65rem 0.75rem !important;
+    border-radius: 8px !important;
     text-align: center !important;
+    justify-content: center !important;
   }
 }
 
 @media (max-width: 360px) {
   .vue-media-lounge {
-    padding: 0.85rem 0.55rem 1.2rem 0.55rem;
+    padding: 0.75rem 0.45rem 1rem 0.45rem !important;
   }
 
   .lounge-tab-btn {
     font-size: 0.72rem !important;
-    padding: 0.45rem 0.1rem !important;
+    padding: 0.4rem 0.1rem !important;
   }
 
   .deck-controls-hindi .ctrl-btn {
-    font-size: 0.72rem !important;
-    padding: 0.55rem 0.2rem !important;
+    font-size: 0.68rem !important;
+    padding: 0.5rem 0.15rem !important;
+  }
+
+  .res-btn {
+    font-size: 0.66rem !important;
+    padding: 0.4rem 0.1rem !important;
   }
 
   .vinyl-display {
-    width: 44px !important;
-    height: 44px !important;
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .result-header h4 {
+    font-size: 0.95rem !important;
+  }
+
+  .fps-number {
+    font-size: 1.35rem !important;
   }
 }
 </style>
