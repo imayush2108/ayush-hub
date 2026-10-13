@@ -474,6 +474,7 @@ const artistFilters = [
   'Sonu Nigam',
   'Atif Aslam',
   'Mohit Chauhan',
+  'Aditya Rikhari',
   'Salman Hits'
 ];
 
@@ -631,20 +632,20 @@ const hindiTracks = [
     "ayushNote": "Radhe's iconic romantic ode from Tere Naam. KK and Udit Narayan created an unforgettable evergreen composition."
   },
   {
-    "id": "sahiba-jasleen",
+    "id": "sahiba-aditya-rikhari",
     "title": "Sahiba",
-    "movie": "Indie Soulful Romance (2024)",
-    "artist": "Jasleen Royal, Stebin Ben",
-    "artistTag": "Soulful Hits",
+    "movie": "Independent Single (2024)",
+    "artist": "Aditya Rikhari",
+    "artistTag": "Aditya Rikhari",
     "category": "soulful",
-    "youtubeId": "NW6Dgax2d6I",
-    "spotifyTrackId": "4ulroyDK6rN73nVkCkWhur",
-    "spotifyUrl": "https://open.spotify.com/track/4ulroyDK6rN73nVkCkWhur",
-    "duration": "3:45 min",
-    "genre": "Acoustic Contemporary Indie",
-    "mood": "Sublime Romance & Aesthetic",
+    "youtubeId": "n2dVFdqMYGA",
+    "spotifyTrackId": "0eLtIxPRNJfsmehITZ1qaJ",
+    "spotifyUrl": "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ",
+    "duration": "3:15 min",
+    "genre": "Acoustic Soulful Indie Pop",
+    "mood": "Heartfelt Longing & Acoustic Warmth",
     "icon": "🕊️",
-    "ayushNote": "Starring Vijay Deverakonda & Radhikka Madan. Jasleen Royal and Stebin Ben deliver pure auditory poetry in this viral masterpiece."
+    "ayushNote": "The genuine original acoustic masterpiece by Aditya Rikhari. Raw heartfelt vocals and relatable songwriting that tugs straight at the heartstrings."
   },
   {
     "id": "salman-jeene-ke-chaar-din",
