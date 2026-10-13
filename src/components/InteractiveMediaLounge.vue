@@ -20,21 +20,24 @@
         @click="activeTab = 'music'"
       >
         <span class="tab-icon">🎧</span>
-        <span>Live Audio Lounge</span>
+        <span class="tab-label-full">Live Audio Lounge</span>
+        <span class="tab-label-short">Audio</span>
       </button>
       <button 
         :class="['lounge-tab-btn', { active: activeTab === 'movies' }]"
         @click="activeTab = 'movies'"
       >
         <span class="tab-icon">🎬</span>
-        <span>Movie Mood Matcher</span>
+        <span class="tab-label-full">Movie Mood Matcher</span>
+        <span class="tab-label-short">Movies</span>
       </button>
       <button 
         :class="['lounge-tab-btn', { active: activeTab === 'gaming' }]"
         @click="activeTab = 'gaming'"
       >
         <span class="tab-icon">🎮</span>
-        <span>Gaming Benchmarks</span>
+        <span class="tab-label-full">Gaming Benchmarks</span>
+        <span class="tab-label-short">Gaming</span>
       </button>
     </div>
 
@@ -186,7 +189,7 @@
               @click="playerEngine = 'spotify'"
               title="Switch to Spotify Embed Audio Player"
             >
-              <span>🟢 Spotify Audio</span>
+              <span>🟢 Spotify</span>
             </button>
 
             <button 
@@ -196,7 +199,7 @@
               @click="playerEngine = 'youtube'"
               title="Switch to YouTube HD Video Player"
             >
-              <span>▶ YouTube HD</span>
+              <span>▶ YouTube</span>
             </button>
 
             <a 
@@ -1232,6 +1235,14 @@ const verdictClass = computed(() => {
   color: #FFFFFF;
   border-color: #6366F1;
   box-shadow: 0 8px 24px -4px rgba(79, 70, 229, 0.5);
+}
+
+.tab-label-short {
+  display: none;
+}
+
+.tab-label-full {
+  display: inline;
 }
 
 /* Artist Filters */
@@ -2408,10 +2419,29 @@ const verdictClass = computed(() => {
     border-radius: var(--radius-lg);
   }
 
+  .lounge-header {
+    margin-bottom: 0.85rem;
+    text-align: center;
+  }
+
+  .tech-badge {
+    display: none;
+  }
+
+  .lounge-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .lounge-subtitle {
+    display: none;
+  }
+
   .artist-filters-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.45rem;
+    margin-bottom: 1rem;
   }
 
   .artist-chips-wrap {
@@ -2448,29 +2478,32 @@ const verdictClass = computed(() => {
 }
 
 @media (max-width: 640px) {
-  .lounge-title {
-    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  .tab-label-full {
+    display: none;
   }
 
-  .lounge-subtitle {
-    font-size: 0.85rem;
+  .tab-label-short {
+    display: inline;
   }
 
   .lounge-tabs {
-    display: flex;
-    gap: 0.45rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
     width: 100%;
-    justify-content: center;
+    margin-bottom: 1.1rem;
   }
 
   .lounge-tab-btn {
-    flex: 1;
-    min-width: 0;
-    padding: 0.55rem 0.35rem;
-    font-size: 0.76rem;
+    width: 100%;
+    padding: 0.55rem 0.25rem;
+    font-size: 0.78rem;
+    font-weight: 700;
     text-align: center;
     justify-content: center;
     gap: 0.3rem;
+    border-radius: 9999px;
+    white-space: nowrap;
   }
 
   .category-pills-row {
@@ -2492,15 +2525,23 @@ const verdictClass = computed(() => {
   }
 
   .deck-controls-hindi {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.35rem;
+    width: 100%;
+    margin-top: 0.65rem;
+    margin-bottom: 0.3rem;
   }
 
   .deck-controls-hindi .ctrl-btn {
     width: 100%;
-    padding: 0.65rem 0.8rem;
-    font-size: 0.82rem;
-    white-space: normal;
+    padding: 0.55rem 0.25rem;
+    font-size: 0.74rem;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
   }
 
   .benchmark-breakdown {
@@ -2523,39 +2564,33 @@ const verdictClass = computed(() => {
 
 @media (max-width: 480px) {
   .vue-media-lounge {
-    padding: 1.1rem 0.75rem;
+    padding: 1rem 0.75rem 1.4rem 0.75rem;
     border-radius: 16px;
   }
 
-  .tech-badge {
-    font-size: 0.7rem;
-    padding: 0.25rem 0.7rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   .lounge-tabs {
-    flex-direction: column;
-    gap: 0.4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
   }
 
   .lounge-tab-btn {
-    width: 100%;
-    padding: 0.6rem 0.8rem;
-    font-size: 0.82rem;
+    padding: 0.5rem 0.15rem;
+    font-size: 0.74rem;
+    gap: 0.25rem;
   }
 
   .player-deck {
-    padding: 1rem 0.8rem;
+    padding: 0.95rem 0.75rem;
   }
 
   .deck-top {
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .vinyl-display {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
   }
 
   .vinyl-inner {
@@ -2564,20 +2599,23 @@ const verdictClass = computed(() => {
   }
 
   .deck-meta h4 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.25;
   }
 
   .track-desc {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
   }
 
   .full-song-iframe {
-    height: 195px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    max-height: 210px;
   }
 
   .spotify-song-iframe {
-    height: 160px;
+    height: 152px;
   }
 
   .video-meta-txt {
@@ -2590,26 +2628,26 @@ const verdictClass = computed(() => {
   }
 
   .tracks-list-panel {
-    padding: 1rem 0.8rem;
+    padding: 1rem 0.75rem;
   }
 
   .song-item-card {
-    padding: 0.6rem 0.7rem;
-    gap: 0.6rem;
+    padding: 0.6rem 0.65rem;
+    gap: 0.55rem;
   }
 
   .song-play-icon {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.78rem;
   }
 
   .song-meta-col h6 {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
   }
 
   .song-sub-info {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
   }
 
   .poster-graphic {
@@ -2626,7 +2664,7 @@ const verdictClass = computed(() => {
   }
 
   .curator-quote {
-    padding: 0.75rem 0.9rem;
+    padding: 0.75rem 0.85rem;
     gap: 0.75rem;
   }
 
@@ -2673,17 +2711,22 @@ const verdictClass = computed(() => {
 
 @media (max-width: 360px) {
   .vue-media-lounge {
-    padding: 0.9rem 0.6rem;
+    padding: 0.85rem 0.55rem 1.2rem 0.55rem;
   }
 
-  .deck-top {
-    flex-direction: column;
-    align-items: flex-start;
+  .lounge-tab-btn {
+    font-size: 0.7rem;
+    padding: 0.45rem 0.1rem;
+  }
+
+  .deck-controls-hindi .ctrl-btn {
+    font-size: 0.68rem;
+    padding: 0.45rem 0.15rem;
   }
 
   .vinyl-display {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 }
 </style>

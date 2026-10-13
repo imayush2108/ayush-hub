@@ -2159,6 +2159,10 @@
     display: none;
   }
 
+  .section-title-wrap {
+    margin-bottom: 2rem;
+  }
+
   .hero-actions-row {
     flex-direction: column;
     width: 100%;
@@ -2248,6 +2252,10 @@
 @media (max-width: 480px) {
   .navbar-header {
     padding: 0.75rem 0;
+  }
+
+  .section-title-wrap {
+    margin-bottom: 1.4rem;
   }
 
   .brand-title {
@@ -2383,19 +2391,19 @@
   }
 
   .floating-actions {
-    bottom: 1rem;
-    right: 1rem;
-    gap: 0.6rem;
+    bottom: 0.85rem;
+    right: 0.85rem;
+    gap: 0.45rem;
   }
 
   .floating-wa-btn {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
   }
 
   .floating-scroll-top-btn {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .wa-tooltip {
