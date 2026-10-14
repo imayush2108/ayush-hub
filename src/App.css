@@ -2409,23 +2409,24 @@
 }
 
 .social-reveal-item:hover {
-  transform: scale(1.12) translateY(-2px);
-  filter: brightness(1.08);
+  animation-play-state: paused !important;
+  transform: scale(1.18) translateY(-4px) !important;
+  filter: brightness(1.12);
 }
 
 .social-reveal-item:active {
-  transform: scale(0.94);
+  transform: scale(0.94) !important;
 }
 
-/* Brand-tailored vibrant colors matching official specs */
+/* Brand-tailored vibrant colors & continuous alive animations */
 .social-item-whatsapp {
   background: #25D366;
   box-shadow: 0 8px 24px -2px rgba(37, 211, 102, 0.55);
 }
 
-.social-item-whatsapp:hover {
-  background: #1EBE5D;
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.7);
+.social-items-stack.is-expanded .social-item-whatsapp {
+  animation: waPulseBreathe 2.4s ease-in-out infinite;
+  animation-delay: 0.25s;
 }
 
 .social-item-instagram {
@@ -2433,8 +2434,9 @@
   box-shadow: 0 8px 24px -2px rgba(214, 36, 159, 0.55);
 }
 
-.social-item-instagram:hover {
-  box-shadow: 0 12px 30px rgba(214, 36, 159, 0.7);
+.social-items-stack.is-expanded .social-item-instagram {
+  animation: igFloatShimmer 2.8s ease-in-out infinite;
+  animation-delay: 0.4s;
 }
 
 .social-item-facebook {
@@ -2442,9 +2444,9 @@
   box-shadow: 0 8px 24px -2px rgba(24, 119, 242, 0.55);
 }
 
-.social-item-facebook:hover {
-  background: #166FE5;
-  box-shadow: 0 12px 30px rgba(24, 119, 242, 0.7);
+.social-items-stack.is-expanded .social-item-facebook {
+  animation: fbBounceWave 2.6s ease-in-out infinite;
+  animation-delay: 0.55s;
 }
 
 .social-item-email {
@@ -2452,9 +2454,9 @@
   box-shadow: 0 8px 24px -2px rgba(234, 67, 53, 0.55);
 }
 
-.social-item-email:hover {
-  background: #D93025;
-  box-shadow: 0 12px 30px rgba(234, 67, 53, 0.7);
+.social-items-stack.is-expanded .social-item-email {
+  animation: emailFloatTilt 2.5s ease-in-out infinite;
+  animation-delay: 0.7s;
 }
 
 .social-item-phone {
@@ -2462,9 +2464,128 @@
   box-shadow: 0 8px 24px -2px rgba(16, 185, 129, 0.55);
 }
 
-.social-item-phone:hover {
-  background: #059669;
-  box-shadow: 0 12px 30px rgba(16, 185, 129, 0.7);
+.social-items-stack.is-expanded .social-item-phone {
+  animation: phoneRingWiggle 3.2s ease-in-out infinite;
+  animation-delay: 0.85s;
+}
+
+/* 1. WhatsApp Gentle Heartbeat Breathe & Luminescence Glow */
+@keyframes waPulseBreathe {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+    box-shadow: 0 8px 24px -2px rgba(37, 211, 102, 0.55), 0 0 0 0 rgba(37, 211, 102, 0.45);
+  }
+  50% {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37, 211, 102, 0.8), 0 0 0 7px rgba(37, 211, 102, 0);
+  }
+}
+
+/* 2. Instagram Radiant Float & Gentle Sway */
+@keyframes igFloatShimmer {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 8px 24px -2px rgba(214, 36, 159, 0.55), 0 0 0 0 rgba(225, 48, 108, 0.4);
+  }
+  50% {
+    transform: translateY(-4px) rotate(3deg);
+    box-shadow: 0 15px 32px rgba(214, 36, 159, 0.85), 0 0 0 8px rgba(225, 48, 108, 0);
+  }
+}
+
+/* 3. Facebook Smooth Wave Pulse */
+@keyframes fbBounceWave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 8px 24px -2px rgba(24, 119, 242, 0.55), 0 0 0 0 rgba(24, 119, 242, 0.4);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.07);
+    box-shadow: 0 13px 28px rgba(24, 119, 242, 0.8), 0 0 0 7px rgba(24, 119, 242, 0);
+  }
+}
+
+/* 4. Email Envelope Float & Soft Tilt */
+@keyframes emailFloatTilt {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 8px 24px -2px rgba(234, 67, 53, 0.55), 0 0 0 0 rgba(234, 67, 53, 0.4);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-3.5deg);
+    box-shadow: 0 13px 28px rgba(234, 67, 53, 0.8), 0 0 0 7px rgba(234, 67, 53, 0);
+  }
+}
+
+/* 5. Phone Rhythmic Ring Wobble & Vibrate */
+@keyframes phoneRingWiggle {
+  0%, 65%, 100% {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 8px 24px -2px rgba(16, 185, 129, 0.55);
+  }
+  70%, 80% {
+    transform: translateY(-3px) rotate(-14deg);
+    box-shadow: 0 14px 30px rgba(16, 185, 129, 0.85), 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  75%, 85% {
+    transform: translateY(-3px) rotate(14deg);
+    box-shadow: 0 14px 30px rgba(16, 185, 129, 0.85), 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  90% {
+    transform: translateY(-1px) rotate(0deg);
+  }
+}
+
+/* SVG Hover Micro-Animations */
+.social-reveal-item svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.social-item-whatsapp:hover svg {
+  animation: waBeatIcon 0.55s ease infinite;
+}
+
+@keyframes waBeatIcon {
+  0%, 100% { transform: scale(1.15) rotate(0deg); }
+  50% { transform: scale(1.3) rotate(-8deg); }
+}
+
+.social-item-instagram:hover svg {
+  animation: igSpinIcon 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes igSpinIcon {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.28) rotate(18deg); }
+  100% { transform: scale(1.18) rotate(0deg); }
+}
+
+.social-item-facebook:hover svg {
+  animation: fbWobbleIcon 0.5s ease;
+}
+
+@keyframes fbWobbleIcon {
+  0%, 100% { transform: scale(1.18) rotate(0deg); }
+  50% { transform: scale(1.24) rotate(-12deg); }
+}
+
+.social-item-email:hover svg {
+  animation: emailHopIcon 0.5s ease;
+}
+
+@keyframes emailHopIcon {
+  0%, 100% { transform: translateY(0) scale(1.15); }
+  50% { transform: translateY(-4px) scale(1.26); }
+}
+
+.social-item-phone:hover svg {
+  animation: phoneShakeIcon 0.35s ease infinite;
+}
+
+@keyframes phoneShakeIcon {
+  0%, 100% { transform: scale(1.18) rotate(0deg); }
+  25% { transform: scale(1.25) rotate(-16deg); }
+  75% { transform: scale(1.25) rotate(16deg); }
 }
 
 /* Main Floating Social Button */
