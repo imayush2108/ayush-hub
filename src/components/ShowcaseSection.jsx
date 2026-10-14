@@ -9,54 +9,76 @@ export default function ShowcaseSection() {
 
   const tabs = ['All', 'Music Vault', 'Cinema Watchlist', 'Gaming Arena'];
 
+  const handleNavigateToLounge = (tab) => (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setSelectedItem(null);
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('switch-lounge-tab', { detail: { tab } }));
+      setTimeout(() => {
+        const el = document.getElementById('media-lounge');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.hash = '#media-lounge';
+        }
+      }, 60);
+    }
+  };
+
   const showcaseItems = [
     {
       id: 1,
-      title: 'Neon Rhythms: Lo-Fi Chill & Synthwave Vault',
+      title: 'Bollywood & Soulful Melodies Vault',
       category: 'Music Vault',
-      image: getAssetUrl('images/showcase-music.jpg'),
-      badge: "Ayush's Choice • 500+ Tracks",
+      image: getAssetUrl('images/showcase-bollywood-music.jpg'),
+      badge: "Ayush's Choice • 34 Handpicked Tracks",
       score: '9.9/10',
-      tagline: 'Analog tape warmth, soothing lo-fi beats, and nostalgic synth chords for deep focus.',
+      tagline: 'Timeless romantic gems, soulful sufi rock, and iconic 2000s Bollywood melodies curated by Ayush.',
       highlights: [
-        'Curated Spotify playlist with over 24 hours of non-stop flow',
-        'Includes exclusive lo-fi indie tracks from Indian independent beatmakers',
-        'Mastered for high-fidelity headphone listening and late-night study'
+        '34 verified tracks with lossless Spotify studio playback & official Full HD YouTube videos',
+        'Complete sing-along lyrics and personalized curator reviews for every track',
+        'Featuring KK, Arijit Singh, Mustafa Zahid, Mohit Chauhan, Atif Aslam & Shreya Ghoshal'
       ],
-      ctaText: 'Stream on Spotify / WhatsApp',
-      ctaUrl: 'https://wa.me/919508678989?text=Hi%20Ayush,%20please%20send%20the%20Neon%20Rhythms%20playlist%20link!'
+      ctaText: 'Listen in Entertainment Corner',
+      loungeTab: 'music',
+      ctaUrl: '#media-lounge'
     },
     {
       id: 2,
-      title: 'Neo-Tokyo 2049 & Cinema Masterpieces',
+      title: '2026 Cinema Vault & Audited Reviews',
       category: 'Cinema Watchlist',
-      image: getAssetUrl('images/showcase-movies.jpg'),
-      badge: 'Cinephile Essential • 4K HDR',
+      image: getAssetUrl('images/showcase-cinema-2026.jpg'),
+      badge: 'Verified 2026 Cinema • Reviews & Trailers',
       score: '9.8/10',
-      tagline: 'Atmospheric sci-fi, deep psychological thrillers, and award-winning cinematography breakdowns.',
+      tagline: 'Honest spoiler-free movie reviews, Hindi dubbing verification audits, and official studio 4K trailers.',
       highlights: [
-        'Spoiler-free cinematic breakdown with scene-by-scene audio-visual analysis',
-        'Curated list of 15 mind-bending cinema experiences streaming on major OTTs',
-        'Direct director insights and cinematography notes from Roger Deakins to Denis Villeneuve'
+        'Verified 2026 releases across Bollywood, South Indian Cinema, and Marvel blockbusters',
+        'In-depth pros & cons, critic consensus ratings, and Hindi dub authenticity audits',
+        'Full studio 4K trailer playback with interactive genre and date filters'
       ],
-      ctaText: 'Get Full Movie Watchlist',
-      ctaUrl: 'https://wa.me/919508678989?text=Hi%20Ayush,%20please%20send%20the%20Neo-Tokyo%20Cinema%20Watchlist!'
+      ctaText: 'Explore Movies in Entertainment Corner',
+      loungeTab: 'movies',
+      ctaUrl: '#media-lounge'
     },
     {
       id: 3,
-      title: 'Cyberpunk Triple-Monitor Battlestation & Benchmarks',
+      title: 'PC Battlestation & 37-Game Benchmark Suite',
       category: 'Gaming Arena',
-      image: getAssetUrl('images/showcase-gaming.jpg'),
-      badge: 'RTX 4080 Super • 165Hz Ultra',
+      image: getAssetUrl('images/showcase-gaming-rig.jpg'),
+      badge: '37 Verified Games • RTX 4080 Super',
       score: '9.7/10',
-      tagline: 'In-depth benchmark testing, path-traced ray tracing comparisons, and competitive esports configs.',
+      tagline: 'Real-time FPS performance estimates, ray tracing analysis, and competitive esports hardware benchmarks.',
       highlights: [
-        'Tested across 40+ AAA and esports titles for 1% low frame time stability',
-        'Optimal DLSS 3.5 & Frame Generation presets for competitive shooters',
-        'Complete hardware breakdown & peripheral guide for aspiring creators'
+        'Real-time FPS simulations across 1080p Ultra, 1440p High, and 4K Cinematic presets',
+        'Rigorous benchmarking on RTX 4080 Super, Ryzen 7 7800X3D, and 32GB DDR5 6000MHz',
+        'Curated library: Cyberpunk 2077, GTA V, Black Myth: Wukong, Valorant, and CS2'
       ],
-      ctaText: 'View Rig Benchmarks & Join Lobby',
-      ctaUrl: 'https://wa.me/919508678989?text=Hi%20Ayush,%20I%20want%20to%20know%20more%20about%20your%20Gaming%20Rig!'
+      ctaText: 'Check Live Benchmarks',
+      loungeTab: 'gaming',
+      ctaUrl: '#media-lounge'
     }
   ];
 
@@ -71,7 +93,7 @@ export default function ShowcaseSection() {
           <span className="section-tag">PORTFOLIO & CURATIONS</span>
           <h2 className="section-heading">Digital Content Showcases</h2>
           <p className="section-subtext">
-            Browse through my latest flagship curations and multimedia experiences. Click any card to view full details.
+            Explore the 3 flagship pillars of My Entertainment Corner: Handpicked Bollywood melodies, audited 2026 cinema releases, and real-time PC gaming benchmarks.
           </p>
         </div>
 
@@ -117,10 +139,15 @@ export default function ShowcaseSection() {
                 <p className="showcase-tagline">{item.tagline}</p>
 
                 <div className="showcase-card-footer">
-                  <span className="read-more-link">
-                    <span>View Full Curation</span>
+                  <button 
+                    type="button"
+                    className="read-more-link"
+                    onClick={handleNavigateToLounge(item.loungeTab)}
+                    title={`Explore ${item.title} in My Entertainment Corner`}
+                  >
+                    <span>Explore in Entertainment Corner</span>
                     <ExternalLink size={15} />
-                  </span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -167,9 +194,8 @@ export default function ShowcaseSection() {
               <div className="modal-action-bar">
                 <a 
                   href={selectedItem.ctaUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
                   className="btn btn-primary"
+                  onClick={handleNavigateToLounge(selectedItem.loungeTab)}
                 >
                   <span>{selectedItem.ctaText}</span>
                   <ExternalLink size={16} />

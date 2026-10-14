@@ -113,7 +113,7 @@ export default function ContactSection() {
           <div className="contact-info-col">
             <h3 className="contact-info-title">Business & Direct Contact Info</h3>
             <p className="contact-info-sub">
-              Ayush Hub is based in Purnia, Bihar, India. Always welcoming creative conversations, playlist exchanges, and cinema discussions.
+              Ayush here — sharing everything I love about music, movies, and games. Come join the conversation.
             </p>
 
             <div className="contact-cards-stack">
@@ -177,7 +177,7 @@ export default function ContactSection() {
                 <MapPin size={16} /> <span>Purnia, Bihar, India</span>
               </div>
               <p className="map-sub">
-                Ayush Hub proudly represents passionate creators from Bihar, connecting with audiences worldwide.
+                From Bihar to the world — exploring music, movies, and games with you.
               </p>
               <a 
                 href="https://maps.google.com/?q=Purnia,Bihar,India" 

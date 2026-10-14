@@ -1,13 +1,8 @@
 <template>
   <div class="vue-media-lounge">
-    <!-- Header with badge -->
+    <!-- Header with title -->
     <div class="lounge-header">
-      <div class="tech-badge">
-        <span class="tech-dot"></span>
-        <span>Vue 3 Reactive Lounge Component</span>
-        <span class="badge-framework">Vue 3 + React 18 Hybrid</span>
-      </div>
-      <h3 class="lounge-title">The Interactive Media & Gaming Station</h3>
+      <h3 class="lounge-title">My Entertainment Corner</h3>
       <p class="lounge-subtitle">
         Experience live audio synthesis, test movie mood curations, and run game benchmark estimates in real time.
       </p>
@@ -20,15 +15,15 @@
         @click="activeTab = 'music'"
       >
         <span class="tab-icon">🎧</span>
-        <span class="tab-label-full">Live Audio Lounge</span>
-        <span class="tab-label-short">Audio</span>
+        <span class="tab-label-full">Listen Now</span>
+        <span class="tab-label-short">Listen</span>
       </button>
       <button 
         :class="['lounge-tab-btn', { active: activeTab === 'movies' }]"
         @click="activeTab = 'movies'"
       >
         <span class="tab-icon">🎬</span>
-        <span class="tab-label-full">2026 Cinema Vault</span>
+        <span class="tab-label-full">Explore Movies</span>
         <span class="tab-label-short">Movies</span>
       </button>
       <button 
@@ -36,8 +31,8 @@
         @click="activeTab = 'gaming'"
       >
         <span class="tab-icon">🎮</span>
-        <span class="tab-label-full">Gaming Benchmarks</span>
-        <span class="tab-label-short">Gaming</span>
+        <span class="tab-label-full">Check Benchmarks</span>
+        <span class="tab-label-short">Benchmarks</span>
       </button>
     </div>
 
@@ -112,7 +107,7 @@
                   <span class="yt-icon">🎬</span> YouTube Video
                 </button>
               </div>
-              <span class="video-duration-pill">⏱ {{ currentSong.duration }}</span>
+              <span class="video-duration-pill">⏱ {{ playerEngine === 'spotify' && currentSong.spotifyDuration ? currentSong.spotifyDuration : currentSong.duration }}</span>
             </div>
             
             <!-- SPOTIFY EMBED PLAYER (Full Studio Audio) -->
@@ -392,93 +387,93 @@
 
         <!-- Movies Cards Grid -->
         <div v-if="filteredMovies.length > 0" class="movies-grid-layout">
-          <div 
-            v-for="movie in filteredMovies" 
-            :key="movie.id" 
-            class="modern-movie-card"
-          >
-            <!-- Card Poster Banner -->
-            <div class="card-poster-wrap" @click="openMovieDetails(movie, false)">
-              <img 
-                :src="movie.posterUrl" 
-                :alt="movie.title + ' poster'" 
-                class="card-poster-img"
-                loading="lazy"
-              />
-              <div class="poster-badges-overlay">
-                <span class="card-badge-date">{{ movie.releaseDayBadge }}</span>
-                <span class="card-badge-rating">★ {{ movie.rating }}</span>
-              </div>
-              <div class="poster-cat-badge">
-                {{ movie.categoryLabel }}
-              </div>
-              <div class="poster-hover-cta">
-                <span>View Details &amp; Trailer ↗</span>
-              </div>
-            </div>
-
-            <!-- Card Body -->
-            <div class="card-content-wrap">
-              <div class="card-header-meta">
-                <span class="card-genre-tag">{{ movie.genre }}</span>
-                <span 
-                  class="card-lang-tag" 
-                  :class="movie.isHindiDubbed ? 'lang-dubbed-yes' : 'lang-dubbed-no'"
-                  :title="movie.hindiStatusNote"
-                >
-                  {{ movie.isHindiDubbed ? '🇮🇳 Hindi Original / Dub' : '🌐 Tamil/Telugu (Dub Unverified)' }}
-                </span>
-              </div>
-
-              <h5 class="card-movie-title" @click="openMovieDetails(movie, false)">{{ movie.title }}</h5>
-              <div class="card-crew-row">
-                <span><strong>Dir:</strong> {{ movie.director }}</span>
-                <span>•</span>
-                <span><strong>Cast:</strong> {{ movie.cast[0] }}</span>
-              </div>
-
-              <p class="card-one-liner">{{ movie.shortDescription }}</p>
-
-              <div class="card-score-strip">
-                <div class="critics-snippet">
-                  <span class="critics-dot">●</span>
-                  <span>{{ movie.criticsRating }}</span>
+            <div 
+              v-for="movie in filteredMovies" 
+              :key="movie.id" 
+              class="modern-movie-card"
+            >
+              <!-- Card Poster Banner -->
+              <div class="card-poster-wrap" @click="openMovieDetails(movie, false)">
+                <img 
+                  :src="movie.posterUrl" 
+                  :alt="movie.title + ' poster'" 
+                  class="card-poster-img"
+                  loading="lazy"
+                />
+                <div class="poster-badges-overlay">
+                  <span class="card-badge-date">{{ movie.releaseDayBadge }}</span>
+                  <span class="card-badge-rating">★ {{ movie.rating }}</span>
                 </div>
-                <div class="verdict-tag-card">
-                  <span>{{ movie.verdict }}</span>
+                <div class="poster-cat-badge">
+                  {{ movie.categoryLabel }}
+                </div>
+                <div class="poster-hover-cta">
+                  <span>View Details &amp; Trailer ↗</span>
                 </div>
               </div>
 
-              <!-- Card Action Buttons -->
-              <div class="card-action-btns">
-                <button 
-                  type="button" 
-                  class="btn-card-details" 
-                  @click="openMovieDetails(movie, false)"
-                >
-                  <span>👁️ View Details</span>
-                </button>
-                <button 
-                  type="button" 
-                  class="btn-card-trailer" 
-                  @click="openMovieDetails(movie, true)"
-                >
-                  <span>▶ Trailer</span>
-                </button>
+              <!-- Card Body -->
+              <div class="card-content-wrap">
+                <div class="card-header-meta">
+                  <span class="card-genre-tag">{{ movie.genre }}</span>
+                  <span 
+                    class="card-lang-tag" 
+                    :class="movie.isHindiDubbed ? 'lang-dubbed-yes' : 'lang-dubbed-no'"
+                    :title="movie.hindiStatusNote"
+                  >
+                    {{ movie.isHindiDubbed ? '🇮🇳 Hindi Original / Dub' : '🌐 Tamil/Telugu (Dub Unverified)' }}
+                  </span>
+                </div>
+
+                <h5 class="card-movie-title" @click="openMovieDetails(movie, false)">{{ movie.title }}</h5>
+                <div class="card-crew-row">
+                  <span><strong>Dir:</strong> {{ movie.director }}</span>
+                  <span>•</span>
+                  <span><strong>Cast:</strong> {{ movie.cast[0] }}</span>
+                </div>
+
+                <p class="card-one-liner">{{ movie.shortDescription }}</p>
+
+                <div class="card-score-strip">
+                  <div class="critics-snippet">
+                    <span class="critics-dot">●</span>
+                    <span>{{ movie.criticsRating }}</span>
+                  </div>
+                  <div class="verdict-tag-card">
+                    <span>{{ movie.verdict }}</span>
+                  </div>
+                </div>
+
+                <!-- Card Action Buttons -->
+                <div class="card-action-btns">
+                  <button 
+                    type="button" 
+                    class="btn-card-details" 
+                    @click="openMovieDetails(movie, false)"
+                  >
+                    <span>👁️ View Details</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    class="btn-card-trailer" 
+                    @click="openMovieDetails(movie, true)"
+                  >
+                    <span>▶ Trailer</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Zero State -->
-        <div v-else class="movie-zero-state">
-          <span class="zero-state-icon">🎬</span>
-          <h5>No Movies Found</h5>
-          <p>No titles matched your query in this category.</p>
-          <button type="button" class="btn-zero-reset" @click="resetMovieFilters">
-            Reset Filters &amp; Show All (9) Movies
-          </button>
-        </div>
+          <!-- Zero State -->
+          <div v-else class="movie-zero-state">
+            <span class="zero-state-icon">🎬</span>
+            <h5>No Movies Found</h5>
+            <p>No titles matched your query in this category.</p>
+            <button type="button" class="btn-zero-reset" @click="resetMovieFilters">
+              Reset Filters &amp; Show All (9) Movies
+            </button>
+          </div>
       </div>
 
       <!-- Detail Modal -->
@@ -600,7 +595,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { getAssetUrl } from '../utils/assets';
 import { songsData as hindiTracks } from '../data/songsData.js';
 import { gamesData as games } from '../data/gamesData.js';
@@ -666,12 +661,12 @@ const artistFilters = [
   'All Artists',
   'KK Classics',
   'Arijit Singh',
+  'Mustafa Zahid',
   'Shreya Ghoshal',
   'Sonu Nigam',
   'Atif Aslam',
   'Mohit Chauhan',
-  'Aditya Rikhari',
-  'Salman Hits'
+  'Aditya Rikhari'
 ];
 
 const musicCategories = [
@@ -684,10 +679,11 @@ const musicCategories = [
 
 const filteredSongs = computed(() => {
   return hindiTracks.filter(song => {
-    // 1. Search Query filter (matches title, movie, artist, genre)
+    // 1. Search Query filter (matches title, movie, artist, genre, variations like tere/tera)
     if (songSearchQuery.value && songSearchQuery.value.trim()) {
       const q = songSearchQuery.value.toLowerCase().trim();
-      const matchText = `${song.title} ${song.movie} ${song.artist} ${song.genre} ${song.artistTag}`.toLowerCase();
+      const titleAlt = song.title.toLowerCase().replace(/\btera\b/g, 'tere').replace(/\btere\b/g, 'tera');
+      const matchText = `${song.title} ${titleAlt} ${song.movie} ${song.artist} ${song.genre} ${song.artistTag} ${song.ayushNote || ''}`.toLowerCase();
       if (!matchText.includes(q)) return false;
     }
     // 2. Category filter
@@ -790,18 +786,41 @@ const calculatedFps = computed(() => {
 const verdictClass = computed(() => {
   return calculatedFps.value >= 60 ? 'verdict-smooth' : 'verdict-heavy';
 });
+
+function handleSwitchLoungeTab(e) {
+  const { tab, cat } = (e && e.detail) || {};
+  if (tab) {
+    activeTab.value = tab;
+  }
+  if (tab === 'movies') {
+    if (cat) selectedMovieCategory.value = cat;
+  } else if (tab === 'gaming') {
+    if (cat === 'esports') onSelectGameCategory('Esports / MP');
+    else if (cat === 'all') onSelectGameCategory('All (37)');
+    else if (cat) onSelectGameCategory(cat);
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('switch-lounge-tab', handleSwitchLoungeTab);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('switch-lounge-tab', handleSwitchLoungeTab);
+});
 </script>
 
 <style scoped>
 .vue-media-lounge {
   background: #0B0F19;
   border-radius: var(--radius-xl);
-  padding: 1.8rem 2rem;
+  padding: 2.5rem 2.8rem;
   color: #F8FAFC;
-  box-shadow: 0 25px 60px -15px rgba(11, 15, 25, 0.5);
+  box-shadow: 0 30px 70px -15px rgba(11, 15, 25, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .vue-media-lounge::before {
@@ -962,7 +981,7 @@ const verdictClass = computed(() => {
 .music-card-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 1.35rem;
+  gap: 1.8rem;
   align-items: start;
 }
 
@@ -970,7 +989,7 @@ const verdictClass = computed(() => {
   background: #141B2D;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: 1.35rem 1.4rem;
+  padding: 1.6rem 1.8rem;
 }
 
 .deck-top {
@@ -1018,7 +1037,7 @@ const verdictClass = computed(() => {
 }
 
 .deck-meta h4 {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: #FFFFFF;
   margin: 0.15rem 0;
 }
@@ -1204,7 +1223,7 @@ const verdictClass = computed(() => {
 
 .spotify-song-iframe {
   width: 100%;
-  height: 230px;
+  height: 245px;
   border: none;
   display: block;
   background: #121212;
@@ -1346,7 +1365,7 @@ const verdictClass = computed(() => {
   background: #141B2D;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: 1.35rem 1.4rem;
+  padding: 1.6rem 1.8rem;
   display: flex;
   flex-direction: column;
 }
@@ -1476,7 +1495,7 @@ const verdictClass = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 0.42rem;
-  max-height: 335px;
+  max-height: 480px;
   overflow-y: auto;
   padding-right: 6px;
 }
@@ -1855,7 +1874,7 @@ const verdictClass = computed(() => {
 .movies-grid-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.8rem;
 }
 
 .modern-movie-card {
@@ -1865,6 +1884,7 @@ const verdictClass = computed(() => {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
 }
@@ -1975,6 +1995,8 @@ const verdictClass = computed(() => {
   gap: 0.45rem;
   flex-wrap: wrap;
   margin-bottom: 0.6rem;
+  min-height: 26px;
+  align-items: center;
 }
 
 .card-genre-tag {
@@ -2009,10 +2031,16 @@ const verdictClass = computed(() => {
   font-size: 1.15rem;
   font-weight: 800;
   color: #FFFFFF;
-  line-height: 1.3;
+  line-height: 1.35;
   margin-bottom: 0.4rem;
   cursor: pointer;
   transition: color 0.2s ease;
+  min-height: 3.1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-movie-title:hover {
@@ -2026,6 +2054,7 @@ const verdictClass = computed(() => {
   color: #94A3B8;
   margin-bottom: 0.65rem;
   flex-wrap: wrap;
+  min-height: 20px;
 }
 
 .card-crew-row strong {
@@ -2037,6 +2066,7 @@ const verdictClass = computed(() => {
   color: #94A3B8;
   line-height: 1.5;
   margin-bottom: 0.9rem;
+  height: 2.55rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -2054,6 +2084,7 @@ const verdictClass = computed(() => {
   padding: 0.45rem 0.75rem;
   margin-bottom: 1rem;
   font-size: 0.75rem;
+  min-height: 36px;
 }
 
 .critics-snippet {
@@ -2206,7 +2237,8 @@ const verdictClass = computed(() => {
 .gaming-tool-grid {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  gap: 2rem;
+  gap: 2.2rem;
+  align-items: start;
 }
 
 .benchmark-controls {

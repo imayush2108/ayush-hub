@@ -51,7 +51,7 @@ export default function TrackDetailPage({ trackId, onBack }) {
     if (imgSrc && imgSrc.includes('hqdefault.jpg')) {
       setImgSrc(`https://i.ytimg.com/vi/${song.youtubeId}/mqdefault.jpg`);
     } else {
-      setImgSrc(getAssetUrl('images/showcase-music.jpg'));
+      setImgSrc(getAssetUrl('images/showcase-bollywood-music.jpg'));
     }
   };
 
@@ -70,15 +70,15 @@ export default function TrackDetailPage({ trackId, onBack }) {
               type="button" 
               onClick={onBack} 
               className="track-back-btn"
-              title="Return to Media Lounge"
+              title="Return to My Entertainment Corner"
             >
               <ArrowLeft size={18} />
-              <span>Back to Media Lounge</span>
+              <span>Back to My Entertainment Corner</span>
             </button>
             <div className="track-breadcrumb-crumbs">
               <span className="crumb-root" onClick={onBack}>Ayush Hub</span>
               <span className="crumb-sep">/</span>
-              <span className="crumb-root" onClick={onBack}>Media Lounge</span>
+              <span className="crumb-root" onClick={onBack}>My Entertainment Corner</span>
               <span className="crumb-sep">/</span>
               <span className="crumb-active">{song.title}</span>
             </div>
@@ -448,7 +448,7 @@ export default function TrackDetailPage({ trackId, onBack }) {
               </p>
               <div className="credit-action-links">
                 <button type="button" onClick={onBack} className="credit-btn-back">
-                  ← Return to Full Lounge
+                  ← Return to My Entertainment Corner
                 </button>
                 <a 
                   href="https://wa.me/919508678989?text=Hi%20Ayush,%20loved%20the%20song%20detail%20pages%20on%20Ayush%20Hub!" 

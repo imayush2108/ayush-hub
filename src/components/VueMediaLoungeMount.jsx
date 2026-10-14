@@ -33,10 +33,10 @@ export default function VueMediaLoungeMount() {
     <section id="media-lounge" className="section section-lounge">
       <div className="container">
         <div className="section-title-wrap">
-          <span className="section-tag tag-amber">⚡ DUAL ENGINE: VUE 3 + REACT 18</span>
-          <h2 className="section-heading">Interactive Media Lounge & Battlestation</h2>
+          <span className="section-tag tag-amber">⚡ ENTERTAINMENT VAULT</span>
+          <h2 className="section-heading">My Entertainment Corner</h2>
           <p className="section-subtext">
-            Immerse yourself in Ayush's real-time reactive entertainment dashboard. Listen to synthesized lo-fi chords, match cinema moods, and check benchmark FPS.
+            Immerse yourself in Ayush's real-time entertainment dashboard. Listen to favorite music, explore verified cinema, and check gaming benchmark estimates.
           </p>
         </div>
 

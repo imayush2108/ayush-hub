@@ -1,6 +1,6 @@
 /**
  * Full Curated Songs Database for Ayush Hub Media Lounge
- * Contains all 32 Hindi songs with authentic YouTube thumbnail art,
+ * Contains all 34 Hindi songs with authentic YouTube thumbnail art,
  * verified Spotify track IDs, full song lyrics, ratings, and curator metadata.
  */
 
@@ -280,6 +280,133 @@ Baahon mein meri
 Baahon mein meri!`
   },
   {
+    id: "mustafa-tera-mera-rishta",
+    title: "Tera Mera Rishta (Original)",
+    movie: "Awarapan (2007)",
+    artist: "Mustafa Zahid, Pritam",
+    artistTag: "Mustafa Zahid",
+    category: "soulful",
+    youtubeId: "g23pmazHwgE",
+    spotifyTrackId: "4J2X3tP2V8oBgvSwniJn8l",
+    spotifyUrl: "https://open.spotify.com/track/4J2X3tP2V8oBgvSwniJn8l",
+    duration: "5:48 min",
+    spotifyDuration: "5:47 min",
+    genre: "Sufi Rock & Melancholic Soul",
+    mood: "Heartbreak, Longing & Redemption",
+    rating: "9.8/10",
+    icon: "💔",
+    director: "Mohit Suri",
+    musicDirector: "Pritam",
+    lyricist: "Sayeed Quadri",
+    actors: "Emraan Hashmi, Shriya Saran",
+    ayushNote: "Mustafa Zahid's raw rock vocals and visceral pain in 'Tera Yakeen Kyun Maine Kiya Nahi' defined an entire generation of melancholic Emraan Hashmi classics. A timeless masterpiece of emotional redemption.",
+    lyrics: `Tera yakeen kyun maine kiya nahi
+Tujhse raha kyun juda
+Mujhpe yeh zindagi karti rahi sitam
+Tune hi di hai panaah
+
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana
+
+Hai kya tadap, hai yeh kaisi saza
+Tu kyun mujhe aaj yaad aa gaya
+Bechain din mere, bechain raat hai
+Kya main karoon kuch bata
+Yeh mere paanv hi khud meri bediyan
+Usse tu mujhe chhoonda
+
+Tera yakeen kyun maine kiya nahi
+Tujhse raha kyun juda
+Mujhpe yeh zindagi karti rahi sitam
+Tune hi di hai panaah
+
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana
+
+Jo khwaab dekhe the, jo rang chhoote the
+Sab kho gaye hain kahan
+Aansoo yeh thamte nahi, dard yeh mit-ta nahi
+Sun le meri daastan
+Yeh mere paanv hi khud meri bediyan
+Usse tu mujhe chhoonda
+
+Tera yakeen kyun maine kiya nahi
+Tujhse raha kyun juda
+Mujhpe yeh zindagi karti rahi sitam
+Tune hi di hai panaah
+
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana
+Tera mera rishta purana!`
+  },
+  {
+    id: "mustafa-zaroorat",
+    title: "Zaroorat",
+    movie: "Ek Villain (2014)",
+    artist: "Mustafa Zahid, Mithoon",
+    artistTag: "Mustafa Zahid",
+    category: "soulful",
+    youtubeId: "VMEXKJbsUmE",
+    spotifyTrackId: "6jUqTvRGOOyJmhxDQaWpNb",
+    spotifyUrl: "https://open.spotify.com/track/6jUqTvRGOOyJmhxDQaWpNb",
+    duration: "4:49 min",
+    spotifyDuration: "6:09 min",
+    genre: "Soulful Bollywood Ballad",
+    mood: "Desolation, Longing & Raw Emotion",
+    rating: "9.7/10",
+    icon: "🌧️",
+    director: "Mohit Suri",
+    musicDirector: "Mithoon",
+    lyricist: "Mithoon",
+    actors: "Sidharth Malhotra, Shraddha Kapoor",
+    ayushNote: "Mithoon's haunting piano chords mixed with Mustafa Zahid's wounded, soaring delivery in 'Mujhe teri zaroorat hai' make this one of the most poignant heartbreak anthems in modern Bollywood history.",
+    lyrics: `Yeh dil tanha kyun rahe
+Kyun hum tukdon mein jiyein
+Yeh dil tanha kyun rahe
+Kyun hum tukdon mein jiyein
+
+Kyun rooh meri yeh sahe
+Main adhoora jee raha hoon
+Har dam yeh keh raha hoon
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+
+Andheron se tha mera rishta bada
+Tune hi ujaalon se waaqif kiya
+Ab lauta main hoon in andheron mein phir
+Toh paaya hai khud ko begaana yahan
+Tanhaayi bhi mujhse khafa ho gayi
+Banjaaron ne bhi thukra diya
+
+Main adhoora jee raha hoon
+Har dam yeh keh raha hoon
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+
+Humsafar har koi har kisi ka nahi
+Khaali rehti hain baahein yahan
+Aansuon se hi seekha hai hasna yahan
+Dard hi to bana aashiyan
+Waqt ki iss dhoop mein
+Saaye bhi chhoot gaye
+Jeene ki har ek tamanna
+Aasra tod gayi
+
+Main adhoora jee raha hoon
+Har dam yeh keh raha hoon
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai
+Mujhe teri zaroorat hai!`
+  },
+  {
     id: "shreya-kalyani",
     title: "Kalyani",
     movie: "Trending Soulful Fusion (2024)",
@@ -423,7 +550,8 @@ Ae dil hai mushkil!`
     youtubeId: "gBxOfn9XT48",
     spotifyTrackId: "6nDsd9LoKLPHv4VcpCG5Wg",
     spotifyUrl: "https://open.spotify.com/track/6nDsd9LoKLPHv4VcpCG5Wg",
-    duration: "5:26 min",
+    duration: "4:52 min",
+    spotifyDuration: "5:26 min",
     genre: "Passionate Rock-Ballad",
     mood: "Haunting Romantic Devotion",
     rating: "9.8/10",
@@ -1108,7 +1236,8 @@ Tere liye, tere liye!`
     youtubeId: "AlvUuGJccKs",
     spotifyTrackId: "0qeZwXIgI4Z4NflV6AnGHk",
     spotifyUrl: "https://open.spotify.com/track/0qeZwXIgI4Z4NflV6AnGHk",
-    duration: "4:39 min",
+    duration: "5:01 min",
+    spotifyDuration: "4:39 min",
     genre: "Electro-Pop Romantic Ballad",
     mood: "Electric Euphoric Love",
     rating: "9.8/10",
@@ -1151,7 +1280,8 @@ Chhod di khudai maine tere liye!`
     youtubeId: "wHDh_ruJ8Ug",
     spotifyTrackId: "3eMlUojGPqVL3c8OVSMfE5",
     spotifyUrl: "https://open.spotify.com/track/3eMlUojGPqVL3c8OVSMfE5",
-    duration: "5:10 min",
+    duration: "4:03 min",
+    spotifyDuration: "5:10 min",
     genre: "Passionate Romantic Duet",
     mood: "Sensual & Melodic Obsession",
     rating: "9.7/10",
@@ -1197,7 +1327,8 @@ Sar pe sawaar hai, kya karoon!`
     youtubeId: "__ZvXBf1rmw",
     spotifyTrackId: "1HJunPeNgdiUYwVOtlcgqo",
     spotifyUrl: "https://open.spotify.com/track/1HJunPeNgdiUYwVOtlcgqo",
-    duration: "5:57 min",
+    duration: "4:36 min",
+    spotifyDuration: "5:57 min",
     genre: "Sensual Piano Romance",
     mood: "Intense Romantic Confession",
     rating: "9.7/10",
@@ -1240,7 +1371,8 @@ Wajah tum ho, wajah tum ho!`
     youtubeId: "fV4x7OCqFLA",
     spotifyTrackId: "03KYSQyAkKDADoYYjAliTO",
     spotifyUrl: "https://open.spotify.com/track/03KYSQyAkKDADoYYjAliTO",
-    duration: "7:29 min",
+    duration: "6:46 min",
+    spotifyDuration: "7:29 min",
     genre: "2000s Pop Rom-Com",
     mood: "Playful Sunshine Flirtation",
     rating: "9.7/10",

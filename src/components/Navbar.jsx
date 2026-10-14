@@ -22,7 +22,7 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'Services', href: '#services' },
     { name: 'About', href: '#about' },
-    { name: 'Media Lounge (Vue)', href: '#media-lounge' },
+    { name: 'My Entertainment Corner', href: '#media-lounge' },
     { name: 'Process', href: '#process' },
     { name: 'Showcase', href: '#showcase' },
     { name: 'Reviews', href: '#reviews' },
@@ -52,9 +52,9 @@ export default function Navbar() {
               <li key={link.name} className="nav-item">
                 <a 
                   href={link.href} 
-                  className={`nav-link ${link.name.includes('Vue') ? 'nav-link-vue' : ''}`}
+                  className={`nav-link ${link.href === '#media-lounge' ? 'nav-link-vue' : ''}`}
                 >
-                  {link.name.includes('Vue') && <Sparkles size={14} className="vue-sparkle-icon" />}
+                  {link.href === '#media-lounge' && <Sparkles size={14} className="vue-sparkle-icon" />}
                   {link.name}
                 </a>
               </li>

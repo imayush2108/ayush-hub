@@ -1,39 +1,57 @@
 import React from 'react';
-import { Star, Quote, CheckCircle2 } from 'lucide-react';
+import { Star, Quote, CheckCircle2, ExternalLink } from 'lucide-react';
 import { DoodleDots, DoodleSparkle } from './Doodles';
 import { getAssetUrl } from '../utils/assets';
 
 export default function TestimonialsSection() {
+  const handleNavigateToLounge = (tab) => (e) => {
+    if (e) e.preventDefault();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('switch-lounge-tab', { detail: { tab } }));
+      setTimeout(() => {
+        const el = document.getElementById('media-lounge');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.hash = '#media-lounge';
+        }
+      }, 60);
+    }
+  };
+
   const testimonials = [
     {
       id: 1,
-      quote: "Ayush's lo-fi playlist 'Purnia Twilight Chill' has literally been the soundtrack of my entire engineering semester. The curation is so immaculate, there is zero skip rate. Best taste in indie music ever!",
+      quote: "Ayush's Bollywood & Soulful Melodies vault is pure magic. From KK's iconic classics like 'Zara Sa' to Mustafa Zahid and Arijit's gems, having verified lyrics with lossless Spotify audio in one place makes it my daily sanctuary. Zero skip rate!",
       name: "Pooja Verma",
       role: "Creative Director & Podcaster",
       location: "Patna, Bihar",
       avatar: getAssetUrl('images/avatar-1.jpg'),
       rating: 5,
-      favorite: "Music Vault"
+      favorite: "Bollywood & Soulful Vault",
+      tab: "music"
     },
     {
       id: 2,
-      quote: "Whenever my weekend movie night feels aimless, I check Ayush Hub. His reviews of 'Past Lives' and 'Tumbbad' were spot on. He doesn't follow mainstream hype; he finds actual cinematic masterpieces.",
+      quote: "Ayush Hub's 2026 Cinema Vault is the most reliable movie guide I've seen. His honest spoiler-free reviews, clear pros & cons, and especially the Hindi dubbing authenticity audits save me every weekend. The 4K trailer integrations are seamless.",
       name: "Rohan Mehta",
       role: "Film Critic & Cinephile",
       location: "Kolkata, WB",
       avatar: getAssetUrl('images/avatar-2.jpg'),
       rating: 5,
-      favorite: "Cinema Watchlists"
+      favorite: "2026 Cinema Vault",
+      tab: "movies"
     },
     {
       id: 3,
-      quote: "His hardware testing on Elden Ring and Cyberpunk helped me tune my RTX 3070 rig with perfect frame times. Plus, playing ranked with Ayush on Discord is always high energy and zero toxicity!",
+      quote: "The RTX 4080 Super benchmark suite across 37 games gives astonishingly accurate FPS estimates from 1080p Ultra to 4K. Whether optimizing Cyberpunk ray tracing or jumping into competitive Valorant lobbies, Ayush's tech breakdowns are top-tier.",
       name: "Vikram Sengupta",
       role: "Competitive FPS Gamer",
       location: "Bengaluru, Karnataka",
-      avatar: getAssetUrl('images/vikram-sengupta.jpg'),
+      avatar: getAssetUrl('images/avatar-3.jpg'),
       rating: 5,
-      favorite: "Gaming Arena"
+      favorite: "PC Battlestation & Benchmarks",
+      tab: "gaming"
     }
   ];
 
@@ -45,10 +63,10 @@ export default function TestimonialsSection() {
 
       <div className="container">
         <div className="section-title-wrap">
-          <span className="section-tag">TESTIMONIALS</span>
+          <span className="section-tag">COMMUNITY VOICES</span>
           <h2 className="section-heading">What People Say About Us</h2>
           <p className="section-subtext">
-            Authentic words from fellow cinephiles, gamers, and audiophiles who trust Ayush Hub.
+            Authentic feedback from fellow music lovers, cinephiles, and gamers who explore My Entertainment Corner.
           </p>
         </div>
 
@@ -74,7 +92,15 @@ export default function TestimonialsSection() {
               </div>
 
               <div className="testi-favorite-pill">
-                <span>Favorite Hub: {t.favorite}</span>
+                <button 
+                  type="button" 
+                  className="testi-favorite-btn"
+                  onClick={handleNavigateToLounge(t.tab)}
+                  title={`Jump to ${t.favorite} in My Entertainment Corner`}
+                >
+                  <span>Favorite: {t.favorite}</span>
+                  <ExternalLink size={13} />
+                </button>
               </div>
             </div>
           ))}

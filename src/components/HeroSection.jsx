@@ -36,8 +36,8 @@ export default function HeroSection() {
 
           {/* Subtext */}
           <p className="hero-subtext">
-            A personal destination dedicated to the art of <strong>Music, Movies, and Gaming</strong>. 
-            I scour the digital realm to deliver honest cinema reviews, mood-lifting lo-fi playlists, and 
+            A personal destination dedicated to the art of <strong>Music, Movies, and Gaming</strong>.
+            I scour the digital realm to deliver honest cinema reviews, mood-lifting lo-fi playlists, and
             high-octane gaming breakdowns from my hub in Purnia, Bihar.
           </p>
 
@@ -48,11 +48,11 @@ export default function HeroSection() {
               <ArrowRight size={18} />
             </a>
 
-            <a href="#media-lounge" className="hero-video-link">
+            <a href="#media-lounge" className="hero-video-link" title="Explore My Entertainment Corner">
               <span className="video-play-disc">
                 <Play size={16} fill="#FBBF24" color="#FBBF24" />
               </span>
-              <span className="video-link-text">Live Media Lounge</span>
+              <span className="video-link-text">My Entertainment Corner</span>
             </a>
           </div>
 
@@ -61,8 +61,8 @@ export default function HeroSection() {
             <div className="avatar-cluster">
               <img src={getAssetUrl('images/avatar-1.jpg')} alt="Community Member 1" className="cluster-avatar" />
               <img src={getAssetUrl('images/avatar-2.jpg')} alt="Community Member 2" className="cluster-avatar" />
-              <img src={getAssetUrl('images/vikram-sengupta.jpg')} alt="Vikram Sengupta" className="cluster-avatar" />
-              <span className="cluster-avatar-extra">5k+</span>
+              <img src={getAssetUrl('images/avatar-3.jpg')} alt="Vikram Sengupta" className="cluster-avatar" />
+              <span className="cluster-avatar-extra">100+</span>
             </div>
             <div className="community-meta">
               <span className="community-label">Active Community</span>
@@ -95,9 +95,9 @@ export default function HeroSection() {
 
             {/* Ayush's Portrait */}
             <div className="hero-image-frame">
-              <img 
-                src={getAssetUrl('images/hero-ayush.jpg')} 
-                alt="Ayush Shrivastava - Founder & Curator of Ayush Hub" 
+              <img
+                src={getAssetUrl('images/hero-ayush.jpg')}
+                alt="Ayush Shrivastava - Founder & Curator of Ayush Hub"
                 className="hero-portrait-img"
               />
             </div>
