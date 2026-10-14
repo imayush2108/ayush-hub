@@ -376,7 +376,7 @@ export default function TrackDetailPage({ trackId, onBack }) {
               </button>
             </div>
 
-            <div className="lyrics-display-content">
+            <div className="lyrics-display-content" data-lenis-prevent>
               <pre className="lyrics-formatted-pre">{song.lyrics}</pre>
             </div>
 

@@ -19,7 +19,7 @@
       </div>
 
       <!-- Modal Body (Scrollable) -->
-      <div class="modal-body-scroll">
+      <div class="modal-body-scroll" data-lenis-prevent>
         <!-- 1. MOVIE HEADER & BACKDROP HERO -->
         <div class="movie-modal-hero" :style="{ background: movie.themeGradient }">
           <div class="hero-overlay-shade"></div>
