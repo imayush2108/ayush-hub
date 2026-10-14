@@ -101,7 +101,7 @@ export default function HeroSection() {
 
             {/* Floating Experience Badge (matching reference) */}
             <div className="floating-badge badge-experience">
-              <span className="exp-number">5+</span>
+              <span className="exp-number">20+</span>
               <div className="exp-text">
                 <strong>Years</strong>
                 <span>Experience</span>
