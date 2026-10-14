@@ -1,82 +1,94 @@
 import React, { useState } from 'react';
-import { Music, Film, Gamepad2, ArrowRight, X, ExternalLink, Check, Sparkles } from 'lucide-react';
-import { DoodleeSpiral, DoodleDots, DoodleStar } from './Doodles';
+import { Music, Film, Gamepad2, ArrowRight, X, ExternalLink, Sparkles } from 'lucide-react';
 
 export default function ServicesSection() {
   const [activeModal, setActiveModal] = useState(null);
 
+  const handleNavigateToLounge = (tab) => (e) => {
+    if (!tab) return;
+    if (e) e.preventDefault();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('switch-lounge-tab', { detail: { tab } }));
+      setTimeout(() => {
+        const el = document.getElementById('media-lounge');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.hash = '#media-lounge';
+        }
+      }, 60);
+    }
+  };
+
   const services = [
     {
       id: 'music',
-      title: 'Music Vault & Playlists',
-      subtitle: 'Sonic Atmosphere & Beats',
-      icon: <Music size={32} className="service-icon-svg" />,
+      title: 'Music & Playlists',
+      subtitle: 'SONIC BEATS & TRACKS',
+      icon: <Music size={28} className="service-icon-svg" />,
       highlight: false,
-      desc: 'Handcrafted Spotify & Lo-Fi playlists, indie singer-songwriter spotlight, retro synthwave, and evergreen Bollywood classics engineered for focus, travel, and unwinding.',
-      stats: '15+ Curated Playlists • 500+ Handpicked Tracks',
-      colorClass: 'service-card-music',
+      desc: 'Discover music I enjoy, explore featured tracks, and listen to handpicked songs from different artists and genres.',
+      stats: 'Handpicked Songs • Spotify & YouTube Embeds',
+      loungeTab: 'music',
+      buttonText: 'Listen Now',
       picks: [
-        { name: 'Purnia Twilight Chill (Lo-Fi)', genre: 'Lo-Fi Chillhop', mood: 'Focus & Study', duration: '3 hr 45 min' },
-        { name: 'Neon City Midnight Drive', genre: 'Synthwave / Retro Electro', mood: 'Late Night Driving', duration: '2 hr 30 min' },
-        { name: 'Indie Hindi Acoustic Soul', genre: 'Acoustic Indie Pop', mood: 'Heartfelt & Melodic', duration: '4 hr 10 min' },
-        { name: 'Pure Gaming Flow State', genre: 'Cyber Ambient / Glitch', mood: 'Competitive Focus', duration: '2 hr 15 min' },
+        { name: 'Music Discovery', genre: 'Fresh Indie & New Releases', mood: 'Uncovering Unique Melodies', duration: 'Discovery' },
+        { name: 'Chill / Late-Night Listening', genre: 'Soulful Lo-Fi & Acoustics', mood: 'Late-Night Calm & Focus', duration: 'Chill Vibes' },
+        { name: 'Hindi / Indian Music', genre: 'Timeless Bollywood Hits', mood: 'Mohit Chauhan & KK Classics', duration: 'Hindi Hits' },
+        { name: 'Personal Music Pick', genre: 'Tum Se Hi (Jab We Met)', mood: 'Acoustic Soul & Serenity', duration: 'Personal Pick' },
       ],
-      whatsappMsg: 'Hi Ayush, I would love to check out your curated Music Playlists!'
+      whatsappMsg: 'Hi Ayush, I would love to talk about your music recommendations!'
     },
     {
       id: 'movies',
-      title: 'Cinema & Series Watchlists',
-      subtitle: 'Uncompromising Storytelling',
-      icon: <Film size={32} className="service-icon-svg" />,
-      highlight: true, // Featured card with Royal Indigo background matching reference!
-      desc: 'Spoiler-free critical deep-dives, hidden gem recommendations, mind-bending sci-fi epics, and regional cinematic masterpieces reviewed with passionate nuance.',
-      stats: '120+ Movies Reviewed • 9.0+ Curated Scores',
-      colorClass: 'service-card-movies-featured',
+      title: 'Movies & Reviews',
+      subtitle: 'CINEMA & REVIEWS',
+      icon: <Film size={28} className="service-icon-svg" />,
+      highlight: true, // Featured card with Royal Indigo background matching website aesthetic
+      desc: 'Explore movie trailers, discover films across different categories, and read overviews, reviews, and ratings to help you choose what to watch.',
+      stats: 'Movie Trailers • Overviews & Ratings',
+      loungeTab: 'movies',
+      buttonText: 'Explore Movies',
       picks: [
-        { name: 'Interstellar (2014)', genre: 'Sci-Fi Odyssey', mood: 'Existential Awe', duration: 'Ayush Score: 9.8/10' },
-        { name: 'Blade Runner 2049', genre: 'Neo-Noir Cyberpunk', mood: 'Atmospheric Poetry', duration: 'Ayush Score: 9.6/10' },
-        { name: 'Past Lives (2023)', genre: 'Indie Drama', mood: 'Bittersweet & Real', duration: 'Ayush Score: 9.5/10' },
-        { name: 'Tumbbad (2018)', genre: 'Indian Mythological Horror', mood: 'Visual Masterpiece', duration: 'Ayush Score: 9.7/10' },
+        { name: 'Featured Movie', genre: 'Interstellar (2014)', mood: 'Sci-Fi Odyssey & Grand Drama', duration: 'Featured' },
+        { name: 'Story & Experience', genre: 'Blade Runner 2049', mood: 'Atmospheric Neo-Noir Visuals', duration: 'Cinematic' },
+        { name: 'Honest Review', genre: 'Past Lives (2023)', mood: 'Bittersweet Realism & Emotion', duration: 'Honest Review' },
+        { name: 'Personal Movie Pick', genre: 'Tumbbad (2018)', mood: 'Atmospheric Mythological Story', duration: 'Personal Pick' },
       ],
-      whatsappMsg: 'Hi Ayush, I need a great movie recommendation for tonight!'
+      whatsappMsg: 'Hi Ayush, I need a great movie recommendation!'
     },
     {
       id: 'gaming',
-      title: 'Gaming Arena & Reviews',
-      subtitle: 'Next-Gen Performance & Guides',
-      icon: <Gamepad2 size={32} className="service-icon-svg" />,
+      title: 'Gaming Zone',
+      subtitle: 'GAMING ZONE',
+      icon: <Gamepad2 size={28} className="service-icon-svg" />,
       highlight: false,
-      desc: 'Thorough PC benchmark analysis, AAA walkthroughs, souls-like game critiques, esports squad tips, and hardware optimization guides tested in-house on high-end rigs.',
-      stats: '40+ Games Benchmarked • Active Discord Squad',
-      colorClass: 'service-card-gaming',
+      desc: 'Step into the world of gaming, explore featured games, and discover gaming content that brings entertainment and excitement together.',
+      stats: 'Featured Games • Benchmark Insights',
+      loungeTab: 'gaming',
+      buttonText: 'Explore Gaming',
       picks: [
-        { name: 'Elden Ring: Shadow of the Erdtree', genre: 'Action RPG', mood: 'Combat & Wonder', duration: '120+ FPS Optimized' },
-        { name: 'Cyberpunk 2077 (Path Tracing)', genre: 'Open-World Sci-Fi', mood: 'Ultimate Visuals', duration: '92 FPS @ 1440p' },
-        { name: 'Red Dead Redemption 2', genre: 'Cinematic Western', mood: 'Living Breathing World', duration: 'Ayush Score: 9.8/10' },
-        { name: 'Valorant Ranked Guides', genre: 'Tactical Shooter', mood: 'Clutch Playbook', duration: '360Hz Ready' },
+        { name: 'Featured Game', genre: 'Cyberpunk 2077: Phantom Liberty', mood: 'Next-Gen Path Tracing Showcase', duration: 'Featured' },
+        { name: 'Story & Adventure', genre: 'Red Dead Redemption 2', mood: 'Living Western World & Story', duration: 'Adventure' },
+        { name: 'Competitive Gaming', genre: 'Valorant', mood: 'Tactical Shooter & High-FPS Play', duration: 'Competitive' },
+        { name: 'Personal Gaming Pick', genre: 'Elden Ring: Shadow of the Erdtree', mood: 'Action RPG Mastery & Discovery', duration: 'Personal Pick' },
       ],
-      whatsappMsg: 'Hi Ayush, let us squad up or discuss gaming benchmarks!'
+      whatsappMsg: 'Hi Ayush, let us squad up or discuss gaming titles!'
     }
   ];
 
   return (
     <section id="services" className="section services-section">
-      {/* Decorative Doodles */}
-      <div className="section-doodle doodle-service-left">
-        <DoodleeSpiral color="#F59E0B" size={42} className="doodle-float" />
-      </div>
-      <div className="section-doodle doodle-service-right">
-        <DoodleDots color="#CBD5E1" count={12} />
-      </div>
-
       <div className="container">
-        {/* Section Heading matching reference */}
-        <div className="section-title-wrap">
-          <span className="section-tag">SERVICES</span>
-          <h2 className="section-heading">Signature Curations — Explore What I Offer</h2>
-          <p className="section-subtext">
-            Every piece of entertainment on Ayush Hub is personally tested, watched, and listened to. 
-            No filler, no clickbait — only top-tier entertainment tailored for genuine enthusiasts.
+        {/* Section Heading matching exact user copy */}
+        <div className="section-title-wrap services-title-wrap">
+          <span className="section-tag services-tag">SERVICES</span>
+          <h2 className="section-heading services-heading">
+            My Entertainment Picks — Explore <br />
+            What I Love
+          </h2>
+          <p className="section-subtext services-subtext">
+            Discover the music, movies, and games I enjoy, all in one place. Explore my favorite entertainment picks, discover something new, and dive into the content that makes Ayush Hub unique.
           </p>
         </div>
 
@@ -87,7 +99,7 @@ export default function ServicesSection() {
               key={srv.id} 
               className={`service-card ${srv.highlight ? 'service-card-featured' : ''}`}
             >
-              <div className="service-icon-wrap">
+              <div className="service-icon-wrap" aria-hidden="true">
                 {srv.icon}
               </div>
 
@@ -100,20 +112,33 @@ export default function ServicesSection() {
                 <span>{srv.stats}</span>
               </div>
 
-              <button 
-                onClick={() => setActiveModal(srv)}
-                className={`service-action-btn ${srv.highlight ? 'btn-featured-action' : ''}`}
-                aria-label={`View details about ${srv.title}`}
-              >
-                <span>Explore Curations</span>
-                <ArrowRight size={16} />
-              </button>
+              <div className="service-card-footer">
+                <a 
+                  href="#media-lounge"
+                  onClick={handleNavigateToLounge(srv.loungeTab)}
+                  className={`service-action-btn ${srv.highlight ? 'btn-featured-action' : ''}`}
+                  aria-label={`${srv.buttonText} - ${srv.title}`}
+                >
+                  <span>{srv.buttonText}</span>
+                  <ArrowRight size={16} />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveModal(srv)}
+                  className={`service-preview-link ${srv.highlight ? 'preview-link-featured' : ''}`}
+                  title={`View highlights for ${srv.title}`}
+                  aria-label={`View quick details for ${srv.title}`}
+                >
+                  Highlights
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Interactive Details Modal */}
+      {/* Interactive Details Modal (Gaming & Entertainment Explore Area) */}
       {activeModal && (
         <div className="modal-backdrop" onClick={() => setActiveModal(null)}>
           <div className="modal-window" onClick={(e) => e.stopPropagation()}>
@@ -149,16 +174,30 @@ export default function ServicesSection() {
               </div>
 
               <div className="modal-footer-cta">
-                <p>Looking for direct recommendation links or want to request a custom playlist or review?</p>
-                <a 
-                  href={`https://wa.me/919508678989?text=${encodeURIComponent(activeModal.whatsappMsg)}`}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-whatsapp"
-                >
-                  <span>Request on WhatsApp (+91 9508678989)</span>
-                  <ExternalLink size={16} />
-                </a>
+                <p>Ready to jump into {activeModal.title} with interactive players and live content?</p>
+                <div className="modal-cta-group">
+                  <a 
+                    href="#media-lounge"
+                    onClick={(e) => {
+                      setActiveModal(null);
+                      handleNavigateToLounge(activeModal.loungeTab)(e);
+                    }}
+                    className="btn btn-primary"
+                  >
+                    <span>{activeModal.buttonText} in Entertainment Corner</span>
+                    <ArrowRight size={16} />
+                  </a>
+
+                  <a 
+                    href={`https://wa.me/919508678989?text=${encodeURIComponent(activeModal.whatsappMsg)}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-whatsapp"
+                  >
+                    <span>Connect on WhatsApp</span>
+                    <ExternalLink size={15} />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

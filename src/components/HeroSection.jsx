@@ -21,30 +21,27 @@ export default function HeroSection() {
       <div className="container hero-container">
         {/* Left Column: Intro & Content */}
         <div className="hero-content-col">
-          {/* Top Pill */}
+          {/* Top Pill / Small Intro */}
           <div className="hero-welcome-badge">
             <span className="badge-sparkle">✨</span>
-            <span>Welcome to Ayush Hub • Purnia, Bihar</span>
+            <span>Hello, I'm Ayush</span>
           </div>
 
           {/* Heading */}
           <h1 className="hero-headline">
-            Hello, I’m <br />
-            <span className="hero-name">Ayush Shrivastava</span> <br />
-            <span className="hero-role">Content Curator</span>
+            Welcome to <br />
+            <span className="hero-name">Ayush Hub</span>
           </h1>
 
           {/* Subtext */}
           <p className="hero-subtext">
-            A personal destination dedicated to the art of <strong>Music, Movies, and Gaming</strong>.
-            I scour the digital realm to deliver honest cinema reviews, mood-lifting lo-fi playlists, and
-            high-octane gaming breakdowns from my hub in Purnia, Bihar.
+            A personal space for music, movies, gaming, and the digital content I enjoy and create.
           </p>
 
           {/* CTAs */}
           <div className="hero-actions-row">
             <a href="#services" className="btn btn-primary btn-lg hero-cta-btn">
-              <span>Explore My Curations</span>
+              <span>Explore My World</span>
               <ArrowRight size={18} />
             </a>
 
