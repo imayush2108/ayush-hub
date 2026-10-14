@@ -261,7 +261,7 @@
             </button>
           </div>
           
-          <div class="tracks-scroll-list" data-lenis-prevent>
+          <div class="tracks-scroll-list">
             <div 
               v-for="(song, idx) in filteredSongs" 
               :key="song.id" 

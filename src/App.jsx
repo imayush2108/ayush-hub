@@ -12,7 +12,6 @@ import ContactSection from './components/ContactSection';
 import TrackDetailPage from './components/TrackDetailPage';
 import Footer from './components/Footer';
 import { ArrowUp, MessageSquare } from 'lucide-react';
-import useSmoothScroll from './hooks/useSmoothScroll';
 import './App.css';
 
 const getTrackIdFromHash = () => {
@@ -24,22 +23,17 @@ const getTrackIdFromHash = () => {
 
 export default function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [currentTrackId, setCurrentTrackId] = useState(getTrackIdFromHash);
-
-  // Activate premium Lenis smooth inertia scrolling
-  useSmoothScroll();
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        setScrollProgress((window.scrollY / totalScroll) * 100);
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
       }
-      setShowScrollTop(window.scrollY > 400);
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -50,13 +44,7 @@ export default function App() {
       if (!trackId && window.location.hash === '#media-lounge') {
         setTimeout(() => {
           const el = document.getElementById('media-lounge');
-          if (el) {
-            if (window.__lenis) {
-              window.__lenis.scrollTo(el, { offset: -76, duration: 1.2 });
-            } else {
-              el.scrollIntoView({ behavior: 'smooth' });
-            }
-          }
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 80);
       }
     };
@@ -64,26 +52,8 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Smooth scroll back to top when track detail page opens
-  useEffect(() => {
-    if (currentTrackId) {
-      if (window.__lenis) {
-        window.__lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo(0, 0);
-      }
-    }
-  }, [currentTrackId]);
-
   const scrollToTop = () => {
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0, {
-        duration: 1.25,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToLounge = () => {
@@ -91,29 +61,12 @@ export default function App() {
     setCurrentTrackId(null);
     setTimeout(() => {
       const el = document.getElementById('media-lounge');
-      if (el) {
-        if (window.__lenis) {
-          window.__lenis.scrollTo(el, { offset: -76, duration: 1.2 });
-        } else {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
   return (
     <div className="app-root">
-      {/* Top Scroll Reading Progress Indicator */}
-      <div 
-        className="top-scroll-progress-bar"
-        style={{ width: `${scrollProgress}%` }}
-        role="progressbar"
-        aria-valuenow={Math.round(scrollProgress)}
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-label="Page scroll progress"
-      />
-
       {/* Top Navbar */}
       <Navbar />
 
