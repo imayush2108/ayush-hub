@@ -177,7 +177,7 @@
           <!-- Ayush's Personal Curator Note -->
           <div class="curator-music-note">
             <div class="curator-mini-avatar">
-              <img :src="getAssetUrl('images/hero-ayush.jpg')" alt="Ayush Shrivastava" loading="lazy" decoding="async" width="40" height="40" />
+              <img :src="getAssetUrl('images/hero-ayush.jpg')" alt="Ayush Shrivastava" />
             </div>
             <div class="curator-mini-text">
               <strong>Ayush's Review Note:</strong>

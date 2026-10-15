@@ -102,14 +102,9 @@ export function useScrollReveal() {
     const timer = setTimeout(scanAndObserve, 250);
     const timer2 = setTimeout(scanAndObserve, 800);
 
-    // Throttled MutationObserver to auto-reveal dynamically mounted components without thrashing the main thread
-    let mutationTimer = null;
+    // MutationObserver to auto-reveal dynamically mounted components or tab changes
     const mutationObserver = new MutationObserver(() => {
-      if (mutationTimer) return;
-      mutationTimer = setTimeout(() => {
-        mutationTimer = null;
-        scanAndObserve();
-      }, 150);
+      scanAndObserve();
     });
 
     mutationObserver.observe(document.body, {
@@ -120,7 +115,6 @@ export function useScrollReveal() {
     return () => {
       clearTimeout(timer);
       clearTimeout(timer2);
-      if (mutationTimer) clearTimeout(mutationTimer);
       observer.disconnect();
       mutationObserver.disconnect();
     };

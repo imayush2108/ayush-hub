@@ -56,30 +56,9 @@ export default function HeroSection() {
           {/* Real Community Badge matching reference image */}
           <div className="hero-community-card">
             <div className="avatar-cluster">
-              <img 
-                src={getAssetUrl('images/avatar-1.jpg')} 
-                alt="Community Member 1" 
-                className="cluster-avatar" 
-                width="40" 
-                height="40" 
-                decoding="async"
-              />
-              <img 
-                src={getAssetUrl('images/avatar-2.jpg')} 
-                alt="Community Member 2" 
-                className="cluster-avatar" 
-                width="40" 
-                height="40" 
-                decoding="async"
-              />
-              <img 
-                src={getAssetUrl('images/avatar-3.jpg')} 
-                alt="Vikram Sengupta" 
-                className="cluster-avatar" 
-                width="40" 
-                height="40" 
-                decoding="async"
-              />
+              <img src={getAssetUrl('images/avatar-1.jpg')} alt="Community Member 1" className="cluster-avatar" />
+              <img src={getAssetUrl('images/avatar-2.jpg')} alt="Community Member 2" className="cluster-avatar" />
+              <img src={getAssetUrl('images/avatar-3.jpg')} alt="Vikram Sengupta" className="cluster-avatar" />
               <span className="cluster-avatar-extra">100+</span>
             </div>
             <div className="community-meta">
@@ -117,10 +96,6 @@ export default function HeroSection() {
                 src={getAssetUrl('images/hero-ayush.jpg')}
                 alt="Ayush Shrivastava - Founder & Curator of Ayush Hub"
                 className="hero-portrait-img"
-                width="440"
-                height="510"
-                fetchPriority="high"
-                decoding="async"
               />
             </div>
 

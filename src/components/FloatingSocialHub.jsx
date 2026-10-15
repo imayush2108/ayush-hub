@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Phone, MessageCircle, X } from 'lucide-react';
+import { Mail, Phone, MessageCircle, X, Share2 } from 'lucide-react';
 
 /**
  * FloatingSocialHub

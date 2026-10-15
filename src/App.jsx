@@ -9,13 +9,12 @@ import ErrorBoundary from './components/ErrorBoundary';
 import ShowcaseSection from './components/ShowcaseSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
+import TrackDetailPage from './components/TrackDetailPage';
 import Footer from './components/Footer';
 import FloatingSocialHub from './components/FloatingSocialHub';
 import useScrollReveal from './hooks/useScrollReveal';
 import { ArrowUp } from 'lucide-react';
 import './App.css';
-
-const TrackDetailPage = React.lazy(() => import('./components/TrackDetailPage'));
 
 const getTrackIdFromHash = () => {
   if (typeof window === 'undefined') return null;
@@ -32,17 +31,14 @@ export default function App() {
   useScrollReveal();
 
   useEffect(() => {
-    let ticking = false;
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setShowScrollTop(window.scrollY > 400);
-          ticking = false;
-        });
-        ticking = true;
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -82,13 +78,7 @@ export default function App() {
       {/* Main Content Sections */}
       {currentTrackId ? (
         <main>
-          <React.Suspense fallback={
-            <div className="track-loading-state" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div className="spinner"></div>
-            </div>
-          }>
-            <TrackDetailPage trackId={currentTrackId} onBack={handleBackToLounge} />
-          </React.Suspense>
+          <TrackDetailPage trackId={currentTrackId} onBack={handleBackToLounge} />
         </main>
       ) : (
         <main>

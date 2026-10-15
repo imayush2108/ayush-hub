@@ -22,9 +22,6 @@ export default function AboutSection() {
                 alt="Ayush Shrivastava - Founder & Curator of Ayush Hub" 
                 className="about-portrait-img"
                 loading="lazy"
-                decoding="async"
-                width="420"
-                height="420"
               />
             </div>
 

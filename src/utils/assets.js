@@ -7,11 +7,7 @@ export function getAssetUrl(path) {
   if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
     return path;
   }
-  let cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  // Automatically serve lightweight WebP version if requesting images/
-  if (cleanPath.startsWith('images/') && (cleanPath.endsWith('.jpg') || cleanPath.endsWith('.jpeg'))) {
-    cleanPath = cleanPath.replace(/\.(jpg|jpeg)$/i, '.webp');
-  }
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   const base = import.meta.env.BASE_URL || '/';
   return base.endsWith('/') ? `${base}${cleanPath}` : `${base}/${cleanPath}`;
 }
