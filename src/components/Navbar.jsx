@@ -7,14 +7,17 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -35,7 +38,14 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a href="#home" className="nav-brand">
           <div className="brand-logo-frame">
-            <img src={getAssetUrl('images/logo.jpg')} alt="Ayush Hub Logo" className="brand-logo-img" />
+            <img 
+              src={getAssetUrl('images/logo.jpg')} 
+              alt="Ayush Hub Logo" 
+              className="brand-logo-img" 
+              width="44" 
+              height="44" 
+              decoding="async" 
+            />
           </div>
           <div className="brand-text-col">
             <span className="brand-title">Ayush Hub</span>

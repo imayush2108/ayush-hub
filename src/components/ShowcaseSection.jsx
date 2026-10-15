@@ -119,7 +119,15 @@ export default function ShowcaseSection() {
               onClick={() => setSelectedItem(item)}
             >
               <div className="showcase-img-wrap">
-                <img src={item.image} alt={item.title} className="showcase-img" />
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className="showcase-img" 
+                  loading="lazy" 
+                  decoding="async" 
+                  width="400" 
+                  height="230" 
+                />
                 <div className="showcase-img-overlay">
                   <span className="overlay-inspect-btn">
                     <Eye size={18} />

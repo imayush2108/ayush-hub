@@ -2,9 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Critical Asset Preloading for Instant Paint -->
+    <link rel="preload" as="image" href="./images/hero-ayush.webp" type="image/webp" fetchpriority="high" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <!-- Primary Meta Tags -->
     <title>Ayush Hub | Music, Movies & Gaming by Ayush Shrivastava | Purnia, Bihar</title>
     <meta name="title" content="Ayush Hub | Music, Movies & Gaming by Ayush Shrivastava | Purnia, Bihar" />
@@ -17,18 +24,20 @@
     <meta property="og:url" content="https://imayush2108.github.io/ayush-hub/" />
     <meta property="og:title" content="Ayush Hub | Music, Movies & Gaming by Ayush Shrivastava" />
     <meta property="og:description" content="Explore handpicked music playlists, movie watchlists, and gaming reviews curated by Ayush Shrivastava in Purnia, Bihar." />
-    <meta property="og:image" content="https://imayush2108.github.io/ayush-hub/images/hero-ayush.jpg" />
+    <meta property="og:image" content="https://imayush2108.github.io/ayush-hub/images/hero-ayush.webp" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content="Ayush Hub | Music, Movies & Gaming by Ayush Shrivastava" />
     <meta property="twitter:description" content="Explore handpicked music playlists, movie watchlists, and gaming reviews curated by Ayush Shrivastava in Purnia, Bihar." />
-    <meta property="twitter:image" content="https://imayush2108.github.io/ayush-hub/images/hero-ayush.jpg" />
+    <meta property="twitter:image" content="https://imayush2108.github.io/ayush-hub/images/hero-ayush.webp" />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Non-render-blocking Google Fonts with display:swap -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

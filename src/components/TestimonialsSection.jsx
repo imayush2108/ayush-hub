@@ -83,7 +83,15 @@ export default function TestimonialsSection() {
 
               <div className="testi-author-row">
                 <div className="testi-avatar-frame">
-                  <img src={t.avatar} alt={t.name} className="testi-avatar-img" />
+                  <img 
+                    src={t.avatar} 
+                    alt={t.name} 
+                    className="testi-avatar-img" 
+                    loading="lazy" 
+                    decoding="async" 
+                    width="56" 
+                    height="56" 
+                  />
                 </div>
                 <div className="testi-author-info">
                   <h4 className="testi-author-name">{t.name}</h4>
