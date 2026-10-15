@@ -1,6 +1,6 @@
 /**
  * Helper to ensure assets from public/ resolve properly across both
- * local development and GitHub Pages subpaths (e.g. /AyushHub/)
+ * local development and GitHub Pages subpaths (e.g. /ayush-hub/)
  */
 export function getAssetUrl(path) {
   if (!path) return '';
